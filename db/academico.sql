@@ -162,3 +162,12 @@ CREATE TABLE asistencia(
     FOREIGN KEY (id_estudiante) REFERENCES estudiante(id_estudiante) ON DELETE CASCADE,
     FOREIGN KEY (id_curso) REFERENCES curso(id_curso) ON DELETE CASCADE
 );
+
+CREATE TABLE registro_login(
+    id_login INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    fecha_login DATETIME DEFAULT CURRENT_TIMESTAMP,
+    estado ENUM('Exitoso', 'Fallido') DEFAULT 'Exitoso',
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
+);
+
