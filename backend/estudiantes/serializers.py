@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from rest_framework import serializers
 from .models import Usuario, TipoEstudiante, Estudiante, Permiso
 
@@ -25,7 +27,6 @@ class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = '__all__'  # incluir todos los campos de la tabla
-        # Si deseas ocultar el password, puedes hacerlo así:
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -48,14 +49,12 @@ class EstudianteSerializer(serializers.ModelSerializer):
     usuario = UsuarioSerializer(read_only=True)
     tipo_estudiante = TipoEstudianteSerializer(read_only=True)
 
-    # Si quieres permitir crear/actualizar estudiante con ID de usuario y tipo:
-    id_usuario = serializers.PrimaryKeyRelatedField(
-        queryset=Usuario.objects.all(), source='usuario', write_only=True
-    )
-    id_tipo_estudiante = serializers.PrimaryKeyRelatedField(
-        queryset=TipoEstudiante.objects.all(), source='tipo_estudiante', write_only=True
-    )
-
+   # llamar a todos los datos anidados (para obtener el nombre, apellido y demas)
+    usuario = UsuarioSerializer(read_only=True, source='id_usuario')
+    tipo_estudiante = TipoEstudianteSerializer(read_only=True, source='id_tipo_estudiante')  
+    # solo por debug cambiarlo luego en el modelo
+    estado = serializers.CharField(default='Activo')
+    fecha_creacion = serializers.DateTimeField(default=datetime.now)  
     class Meta:
         model = Estudiante
         fields = [
@@ -69,8 +68,9 @@ class EstudianteSerializer(serializers.ModelSerializer):
             'fecha_creacion',
         ]
     def create(self, validated_data):
-        usuario = validated_data.pop('usuario')
-        tipo_estudiante = validated_data.pop('tipo_estudiante')
+        # aqui deben ir las claves id_usuario y id_tipo_estudiante
+        usuario = validated_data.pop('id_usuario')
+        tipo_estudiante = validated_data.pop('id_tipo_estudiante')
         estudiante = Estudiante.objects.create(
             id_usuario=usuario,
             id_tipo_estudiante=tipo_estudiante,

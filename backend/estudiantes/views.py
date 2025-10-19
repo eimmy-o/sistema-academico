@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import  Permiso, Usuario, TipoEstudiante, Estudiante
 from .serializers import UsuarioSerializer, TipoEstudianteSerializer, EstudianteSerializer, PermisoSerializer
 
@@ -36,12 +37,13 @@ class TipoEstudianteViewSet(viewsets.ModelViewSet):
 class EstudianteViewSet(viewsets.ModelViewSet):
     queryset = Estudiante.objects.all()
     serializer_class = EstudianteSerializer
-
-    # 🔹 Opcional: filtrar solo los activos
+  
+    #  Opcional: filtrar solo los activos
     def get_queryset(self):
         return Estudiante.objects.filter(estado='Activo')
 
-    # 🔹 Sobrescribir eliminación (desactivar en lugar de borrar)
+
+    #  Sobrescribir eliminación (desactivar en lugar de borrar)
     def destroy(self, request, *args, **kwargs):
         estudiante = self.get_object()
         estudiante.estado = 'Inactivo'

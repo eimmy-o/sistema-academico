@@ -49,9 +49,15 @@ INSTALLED_APPS = [
     'autenticacion',
     # para facilitar los cruds
     'rest_framework',
+    'django_filters',
     # Para que sea posible conectar con el frontend
     'corsheaders',
+    
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
