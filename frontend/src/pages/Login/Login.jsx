@@ -1,6 +1,13 @@
 import { Button, InputLabel, TextField } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 
 export const Login = () => {
+  const navigate = useNavigate();
+  
+  const handleLogin = () => {
+    navigate("/dashboard");
+  }
+
   return (
     <div className="login-container">
         <div className="welcome">
@@ -10,13 +17,13 @@ export const Login = () => {
         </div>
         <div className="login">
           <div className="login-form">
-            <h2>Iniciar sesión</h2>
+            <h2 className="login-title">Iniciar sesión</h2>
             <div className="login-fields">
               <div>
                 <InputLabel sx={{
                   textAlign: "initial",
                   color: "#FFF",
-                  fontFamily: "'Poopins', sans-serif",
+                  fontFamily: "'Poppins', sans-serif",
                   fontWeight: 600
                 }}> 
                   Correo 
@@ -27,7 +34,10 @@ export const Login = () => {
                   sx={{
                     border: "none",
                     bgcolor: "#FFF",
-                    borderRadius: ".5rem"
+                    borderRadius: ".5rem",
+                    "& .MuiInputBase-input": {
+                      padding: ".625rem .75rem"
+                    }
                   }}
                 />
               </div>
@@ -35,7 +45,7 @@ export const Login = () => {
                 <InputLabel sx={{
                   textAlign: "initial",
                   color: "#FFF",
-                  fontFamily: "'Poopins', sans-serif",
+                  fontFamily: "'Poppins', sans-serif",
                   fontWeight: 600,
                 }}> 
                   Contraseña
@@ -46,7 +56,10 @@ export const Login = () => {
                   sx={{
                     border: "none",
                     bgcolor: "#FFF",
-                    borderRadius: ".5rem"
+                    borderRadius: ".5rem",
+                    "& .MuiInputBase-input": {
+                      padding: ".625rem .75rem",
+                    },
                   }}
                 />
               </div>
@@ -54,18 +67,25 @@ export const Login = () => {
             <Button
               fullWidth
               variant="contained"
+              onClick={handleLogin}
               sx={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: "1.125rem",
                 mt: "1rem",
                 bgcolor: "#495057",
-                padding: ".7rem 1rem",
+                padding: ".375rem 1rem",
                 borderRadius: ".5rem",
                 color:"#E9ECEF",
-                fontWeight:600
+                fontWeight:600,
+                textTransform: "none",
               }}
             >
               Iniciar Sesión
             </Button>
           </div>
+          <p className="password-forgot">
+            ¿Olvidaste tu contraseña?
+          </p>
         </div>
     </div>
   )

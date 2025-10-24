@@ -4,7 +4,7 @@
 }
 
 .welcome {
-    width: 60%;
+    width: 59%;
     background-color: #E9ECEF;
     text-align: center;
 }
@@ -20,7 +20,7 @@
 } 
 
 .login {
-    width: 40%;
+    width: 41%;
     background-color: #4A90E2;
     text-align: center;
     height: 100vh;
@@ -28,12 +28,16 @@
 
 .login-form {
     margin-top: 0;
-    padding-inline: 5rem;
+    padding-inline: 8rem;
 }
 
-.login-form h2 {
+.login-title {
     font-family: 'Poppins', sans-serif;
     color: #FFF;
+    font-size: 1.9rem;
+    margin: 0;
+    padding-top: 1.75rem;
+    margin-bottom: 1rem;
 }
 
 .login-fields {
@@ -47,4 +51,14 @@
     max-height: 100vh;
     width: 24rem;
     height: auto;
+}
+
+.password-forgot {
+    margin: 0;
+    margin-top: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 100%;
+    color: #FFF;
 }
