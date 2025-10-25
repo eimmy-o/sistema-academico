@@ -5,10 +5,13 @@ export const Login = () => {
   const navigate = useNavigate();
   
   const handleLogin = () => {
+    //logica de autenticacion
     navigate("/dashboard");
   }
 
+
   return (
+
     <div className="login-container">
         <div className="welcome">
             <h2 className="welcome-h2">Bienvenido a</h2>
@@ -16,7 +19,8 @@ export const Login = () => {
             <img src="public\Group 26.png" className="image-espol"/>
         </div>
         <div className="login">
-          <div className="login-form">
+          <div className="login-contents">
+            <div className="login-form">
             <h2 className="login-title">Iniciar sesión</h2>
             <div className="login-fields">
               <div>
@@ -86,6 +90,8 @@ export const Login = () => {
           <p className="password-forgot">
             ¿Olvidaste tu contraseña?
           </p>
+          </div>
+          
         </div>
     </div>
   )

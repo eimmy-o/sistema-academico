@@ -8,7 +8,8 @@ import { useState } from "react";
 const getMainMenuItems = () => [
   {
     text: 'username',
-    icon: <PersonIcon style={{ width: 18 }}/>
+    icon: <PersonIcon style={{ width: 18 }}/>,
+    path: '/user'
   },
   {
     text: 'Calendario',
@@ -26,6 +27,7 @@ const getMainMenuItems = () => [
     path: '/courses'
   }
 ]
+
 
 export const Navbar = () => {
   const [mainMenuItems, setMainMenuItems] = useState(getMainMenuItems())
@@ -70,6 +72,7 @@ export const Navbar = () => {
             </ListItem>
           ))}
         </List>
+        
       </Drawer>
     </>
   )
