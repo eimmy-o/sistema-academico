@@ -1,0 +1,56 @@
+
+.dash-container {
+    padding: 2rem 2rem;
+    width: 100%;
+}
+
+.dash-title {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: #624185;
+}
+
+.dash-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-radius: .5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card-color-subsection {
+    height: 9.5rem;
+    max-width: 100%;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    padding: .5rem .75rem;
+    width: 18rem;
+}
+
+.course-subject {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    margin-bottom: .5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+}
+
+.course-parallel, .course-pao {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: #6c757c;
+}
