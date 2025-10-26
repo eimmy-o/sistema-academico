@@ -127,6 +127,7 @@ export const Navbar = () => {
             </ListItem>
           ))}
         </List>
+        
       </Drawer>
     </>
   )
