@@ -9,11 +9,6 @@ import { UserProfile } from "./UserProfile";
 
 const getMainMenuItems = () => [
   {
-    text: 'Calendario',
-    icon: <CalendarMonthIcon style={{ width: 18 }}/>,
-    path: '/calendar'
-  }, 
-  {
     text: 'Dashboard',
     icon: <DashboardIcon style={{ width: 18 }}/>,
     path: '/dashboard'
@@ -22,7 +17,12 @@ const getMainMenuItems = () => [
     text: 'Cursos',
     icon: <LibraryBooksIcon style={{ width: 18 }}/>,
     path: '/courses'
-  }
+  },
+  {
+    text: 'Calendario',
+    icon: <CalendarMonthIcon style={{ width: 18 }}/>,
+    path: '/calendar'
+  },
 ]
 
 const getBottomMenuItems = () => [

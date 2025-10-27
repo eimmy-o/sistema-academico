@@ -6,55 +6,55 @@ export const Dashboard = () => {
     {
       materia: 'Desarrollo de Aplicaciones Web y Móviles',
       pao: 'II PAO 2025',
-      codigo: 'SOFG1006',
+      codigoMateria: 'SOFG1006',
       paralelo: 1,
       hexColor: '#a5a1c9'
     },
     {
       materia: 'Emprendimiento e Innovación',
       pao: 'II PAO 2025',
-      codigo: 'ADMG1005',
+      codigoMateria: 'ADMG1005',
       paralelo: 5,
-      hexColor: '#03dbfc'
+      hexColor: '#199eb7'
     },
     {
       materia: 'Ingeniería de Software I',
       pao: 'II PAO 2025',
-      codigo: 'SOFG1007',
+      codigoMateria: 'SOFG1007',
       paralelo: 2,
-      hexColor: '#008000'
+      hexColor: '#008400'
     },
     {
       materia: 'Sistemas Operativos',
       pao: 'II PAO 2025',
-      codigo: 'CCPG1056',
+      codigoMateria: 'CCPG1056',
       paralelo: 1,
-      hexColor: '#fc0320'
+      hexColor: '#f16258'
     },
     {
       materia: 'Análisis de Algoritmos',
       pao: 'II PAO 2025',
-      codigo: 'CCPG1036',
+      codigoMateria: 'CCPG1036',
       paralelo: 3,
-      hexColor: '#ffde05'
+      hexColor: '#e261b8'
     },
     {
       materia: 'Inglés V',
       pao: 'II PAO 2025',
-      codigo: 'IDIG1010',
+      codigoMateria: 'IDIG1010',
       paralelo: 4,
-      hexColor: '#1803fc'
+      hexColor: '#809b36'
     },
   ]
 
   const bgColorOptions = [
-    '#008000',
-    '#03dbfc',
-    '#fc0320',
+    '#008400',
+    '#199eb7',
+    '#f16258',
     '#fc8c03',
-    '#1803fc',
+    '#809b36',
     '#a5a1c9',
-    '#ffde05'
+    '#e261b8'
   ] 
 
   return (
@@ -71,7 +71,7 @@ export const Dashboard = () => {
             </div>
             <div className='course-info'>
               <h4 className='course-subject' style={{color: item.hexColor}} title={item.materia}> {item.materia.toUpperCase()} </h4>
-              <p className='course-parallel'> Paralelo{item.paralelo}_{item.codigo} </p>
+              <p className='course-parallel'> Paralelo{item.paralelo}_{item.codigoMateria} </p>
               <p className='course-pao'> {item.pao} </p>
             </div>
           </div>
