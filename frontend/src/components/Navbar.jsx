@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ExitToApp } from "@mui/icons-material";
 import { UserProfile } from "./UserProfile";
+import { SignOutModal } from "./modals/SignOutModal";
 
 const getMainMenuItems = () => [
   {
@@ -29,7 +30,6 @@ const getBottomMenuItems = () => [
   {
     text: 'Cerrar sesión',
     icon: <ExitToApp />,
-    path: '/logout'
   }
 ]
 
@@ -39,6 +39,11 @@ export const Navbar = () => {
   const drawerWidth = 220;
   const navigate = useNavigate();
   const [userName, setUsername] = useState('username')
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const handleLogOut = () => {
+    navigate('/login')
+  }
 
   return (
     <>
@@ -98,7 +103,7 @@ export const Navbar = () => {
           {bottomMenuItems.map((item) => (
             <ListItem key={item.text} disablePadding>
               <ListItemButton
-                onClick={() => navigate(item.path)}
+                onClick={() => setIsModalOpen(true)}
                 selected={location.pathname === item.path}
                 sx={{
                   ml: 2,
@@ -129,6 +134,12 @@ export const Navbar = () => {
         </List>
         
       </Drawer>
+
+      <SignOutModal 
+        openModal={isModalOpen} 
+        handleClose={() => setIsModalOpen(false)}
+        handleLogOut={handleLogOut}
+      />
     </>
   )
 }
