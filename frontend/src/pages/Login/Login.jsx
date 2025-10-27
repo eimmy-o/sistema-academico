@@ -1,14 +1,44 @@
 import { Button, InputLabel, TextField } from "@mui/material"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 
 export const Login = () => {
   const navigate = useNavigate();
-  
-  const handleLogin = () => {
-    //logica de autenticacion
-    navigate("/dashboard");
-  }
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  })
+  const [errors, setErrors] = useState({})
 
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setUserData((prev) => ({...prev, [name]: value}))
+  }
+  console.log(userData);
+
+  const validateFields = () => {
+    let newErrors = {}
+    Object.keys(userData).map((key) => {
+      if (userData[key] === "" || userData[key] === null || userData[key] === "undefined") {
+        newErrors[key] = "Este campo es obligatorio"
+      } else if (key === "email" && !/^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(userData[key])) {
+        newErrors[key] = "El correo electrónico no es válido"
+      }   
+    })
+    return newErrors
+  }
+  
+  console.log(validateFields());
+
+  const handleLogin = () => {
+    let newErrors = validateFields()
+    setErrors(newErrors)
+
+    if (Object.keys(newErrors).length > 0) return;
+    
+    setErrors({})
+    navigate("/dashboard")
+  }
 
   return (
 
@@ -28,13 +58,15 @@ export const Login = () => {
                   textAlign: "initial",
                   color: "#FFF",
                   fontFamily: "'Poppins', sans-serif",
-                  fontWeight: 600
+                  fontWeight: 600,
                 }}> 
                   Correo 
                 </InputLabel>
                 <TextField 
                   placeholder="Correo" 
                   fullWidth
+                  onChange={handleChange}
+                  name="email"
                   sx={{
                     border: "none",
                     bgcolor: "#FFF",
@@ -57,6 +89,8 @@ export const Login = () => {
                 <TextField 
                   placeholder="Ingrese su contraseña" 
                   fullWidth
+                  name="password"
+                  onChange={handleChange}
                   sx={{
                     border: "none",
                     bgcolor: "#FFF",
@@ -91,7 +125,6 @@ export const Login = () => {
             ¿Olvidaste tu contraseña?
           </p>
           </div>
-          
         </div>
     </div>
   )
