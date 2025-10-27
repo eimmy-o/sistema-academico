@@ -41,7 +41,6 @@
 }
 
 .login-form {
-    
     margin-top: 0;
     padding-inline: 8rem;
 }
@@ -82,3 +81,14 @@
     display: flex;
 }
 
+@media screen and (min-width: 769px) and (max-width: 1296px) {
+    .login-form {
+        padding-inline: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .login-form {
+        padding-inline: 2rem;
+    }
+}
