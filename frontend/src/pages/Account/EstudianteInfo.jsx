@@ -4,25 +4,36 @@ export const EstudianteInfo = () => {
   return (
     
    
-      <div class="tabla-info">
-        <table> 
-          <tr>
-            <th>
-              Matricula:
-            </th>
-            <td>
-              20136546
-            </td>
-
-          </tr>
-
-        </table>
-  <div><strong>Matrícula:</strong> 2022103456</div>
-  <div><strong>Carrera:</strong> Ingeniería en Sistemas</div>
-  <div><strong>Fecha de ingreso:</strong> 15/03/2022</div>
-  <div><strong>Materias en curso:</strong> 5</div>
-  <div><strong>Materias aprobadas:</strong> 20</div>
-  <div><strong>Materias reprobadas:</strong> 2</div>
+      <div>
+        <table class="tabla-info">
+          <h3>
+            Informacion Estudiante
+          </h3>
+      <tr>
+        <th>Matricula:</th>
+        <td>2013559498</td>
+      </tr>
+      <tr>
+        <th>Carrera:</th>
+        <td>Computacion</td>
+      </tr>
+      <tr>
+        <th>Materias aprobadas:</th>
+        <td>15</td>
+      </tr>
+      <tr>
+        <th>Materias reprobadas:</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Materias en curso:</th>
+        <td>8</td>
+      </tr>
+      <tr>
+        <th>Fecha de ingreso:</th>
+        <td>18/08/8987</td>
+      </tr>
+    </table>
 </div>
 
 

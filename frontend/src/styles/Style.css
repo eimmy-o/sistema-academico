@@ -83,67 +83,6 @@
 }
 
 
-.tabla-info {
-    display:block;
-  width: 100%;
-  margin: 20px auto;
-  margin-left: 15%;
-  background: #f9fdff;
-  border: 1px solid #cfe8f3;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', sans-serif;
-}
 
-.tabla-info div {
-  padding: 8px 0;
-  border-bottom: 1px solid #e0f7fa;
-}
 
-.tabla-info div:last-child {
-  border-bottom: none;
-}
-
-.tabla-info strong {
-  color: #0277bd;
-}
-
-.perfil-info {
-  flex: 2;
-  padding: 20px;
-}
-
-.tabla-perfil {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.tabla-perfil th {
-  text-align: left;
-  padding: 8px 12px;
-  color: #333;
-  font-weight: 600;
-  width: 40%;
-}
-
-.tabla-perfil td {
-  padding: 8px 12px;
-  color: #222;
-  background-color: #dcdcdc60;
-}
-
-.perfil-foto {
-  flex: 1;
-  background-color: #e6e6e6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.perfil-foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 

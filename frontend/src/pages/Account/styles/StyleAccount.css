@@ -1,0 +1,154 @@
+.account-page-container{
+    width: 60%;
+}
+
+body{
+    font-family: "'Poppins', sans-serif";
+    font-weight: 600;
+}
+
+.barra-navegacion{
+  background: var(--bg);
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(2,6,23,0.25);
+}
+.lista-navegacion {
+      list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.link-navegacion{
+    display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius: 8px;
+  text-decoration:none;
+  color: var(--muted);
+  font-weight:600;
+  font-size:14px;
+  background: transparent;
+  transition: transform 140ms ease, color 140ms ease, box-shadow 140ms ease, background-color 140ms ease;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+.usuario-info-basica{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: 20px;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    
+    width:max-content;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.opciones-usuario {
+    margin-left: auto;
+    padding-right: 5%;
+    gap: 10%;
+    flex-direction: column;
+}
+
+button{
+    
+    width:100%;
+    padding: 5%;
+    margin: 10%;
+    background-color:#624185 ;
+    border-radius: 12px;
+    font-size: large;
+    color: white;
+
+    &:hover { background-color: rgba(255,255,255,0.2); 
+        border-radius: 3 ; 
+        color: black;
+    }
+}
+
+
+.usuario-nombre h1{
+  font-weight: 900;
+}
+
+.usuario-nombre h2{
+    font-weight: 9;
+}
+.usuario-nombre h3{
+    font-weight: 9;
+}
+img{
+    max-width: 100%;
+  border-radius: 50%;
+}
+.foto-usuario{
+    padding-left: 3%;
+    padding-right: 3%;
+    max-width: 15%;
+  height: auto;
+  display: block;
+  object-fit:cover;
+}
+
+
+
+
+.contenedor-info{
+    display:flex;
+    justify-content: start;
+
+}
+
+.tabla-info{
+    width: 500px;
+    border-collapse: separate;
+  margin: 20px auto;
+  margin-left: 5%;
+  background: #f9fdff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgb(152, 119, 251);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.tabla-info h3 {
+  color: #457b9d;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  width: 100%;
+  font-weight: 900;
+}
+
+.tabla-info th {
+  text-align: left;
+  padding: 15px;
+  color: #333;
+  font-weight: 900;
+  width: 50%;
+  border-bottom: 2px solid #ccc;
+}
+
+.tabla-info td {
+  padding: 12px;
+  color: #222;
+  width: 50%;
+  border-bottom: 2px solid #ccc;
+}
+
+.tabla-info tr:last-child td {
+  border-bottom: none;
+}
+.tabla-info tr:last-child th {
+  border-bottom: none;
+}
+
