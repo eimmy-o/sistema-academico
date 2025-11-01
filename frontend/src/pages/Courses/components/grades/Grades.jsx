@@ -1,6 +1,9 @@
+import '../../Styles/coursesStyles.css'
 
 export const Grades = () => {
   return (
-    <div>Grades</div>
+    <div className="container">
+      <p> Calificaciones </p>
+    </div>
   )
 }

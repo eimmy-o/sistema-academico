@@ -1,6 +1,7 @@
 import { Button, InputLabel, TextField } from "@mui/material"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import { MessageError } from "../../components/tooltips/MessageError";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -14,7 +15,6 @@ export const Login = () => {
     const {name, value} = e.target
     setUserData((prev) => ({...prev, [name]: value}))
   }
-  console.log(userData);
 
   const validateFields = () => {
     let newErrors = {}
@@ -53,7 +53,8 @@ export const Login = () => {
             <div className="login-form">
             <h2 className="login-title">Iniciar sesión</h2>
             <div className="login-fields">
-              <div>
+              <div style={{position: 'relative'}}>
+                <MessageError error={errors.email}/>
                 <InputLabel sx={{
                   textAlign: "initial",
                   color: "#FFF",
@@ -77,7 +78,8 @@ export const Login = () => {
                   }}
                 />
               </div>
-              <div>
+              <div style={{position: 'relative'}}>
+                <MessageError error={errors.password}/>
                 <InputLabel sx={{
                   textAlign: "initial",
                   color: "#FFF",
@@ -91,6 +93,7 @@ export const Login = () => {
                   fullWidth
                   name="password"
                   onChange={handleChange}
+                  type="password"
                   sx={{
                     border: "none",
                     bgcolor: "#FFF",
