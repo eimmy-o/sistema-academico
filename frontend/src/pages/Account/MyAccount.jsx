@@ -1,14 +1,33 @@
-import { EstudianteInfo } from "./estudiante/EstudianteInfo"
-import { HistorialAcademico } from "./estudiante/HistorialAcademico";
-import { InformacionGeneral } from "./InformacionGeneral"
+import { EstNavBar_comp } from "./estudiante/EstNavBar_comp";
+import { InformacionGeneral } from "./InformacionGeneral";
+import { ProfNavBar } from "./profesor/ProfNavBar_comp";
+
+
 import "./styles/StyleAccount.css"
 import { useState } from "react";
 
 export const MyAccount = () => {
-  const [activo, setActivo] = useState("personales");
+  const [rol, setRol] = useState("estudiante");
   return (
     <div className="account-page-container">
       
+      <div className="selector-rol">
+      <p htmlFor="rol" className="etiqueta">
+        Selecciona un rol:
+      </p>
+
+      <select
+        id="rol"
+        value={rol}
+        onChange={(e) => setRol(e.target.value)}
+        className="combo"
+      >
+        <option value="estudiante">Estudiante</option>
+        <option value="profesor">Profesor</option>
+      </select>
+
+      
+    </div>
       
 
       <div className="usuario-info-basica">
@@ -28,64 +47,10 @@ export const MyAccount = () => {
         </div>
       </div>
 
-      <div className="barra-navegacion">
-        <div className="opciones">
-          <button
-            className={activo === "informacion-basica" ? "opcion-slc" : "opcion"}
-            onClick={() => setActivo("informacion-basica")}
-          >
-            Datos personales
-          </button>
-          <button
-            className={activo === "historial-academico" ? "opcion-slc" : "opcion"}
-            onClick={() => setActivo("historial-academico")}
-          >
-            Datos académicos
-          </button>
-          <button
-            className={activo === "calificaciones" ? "opcion-slc" : "opcion"}
-            onClick={() => setActivo("calificaciones")}
-          >
-            Cursos inscritos
-          </button>
-          <button
-            className={activo === "horarios" ? "opcion-slc" : "opcion"}
-            onClick={() => setActivo("horarios")}
-          >
-            Actividad
-          </button>
-        </div>
-
+      <div className="contenido">
+        {rol === "estudiante" ? <EstNavBar_comp /> : <ProfNavBar/>}
       </div>
 
-        
-      <div class="contenedor-cambia">
-        {activo === "informacion-basica" && 
-          <div className="contenedor-info"> 
-            <div className="info-basica">
-              <InformacionGeneral />
-            </div>
-      
-            <div className="info-especifica">
-              <EstudianteInfo />
-            </div>
-          </div>
-        }
-        
-        {activo === "historial-academico" &&
-        <div className="contenedor-info">
-          <HistorialAcademico/>
-        </div>
-        }
-        
-        {activo === "calificaciones" && 
-        <p>Contenido de cursos inscritos</p>}
-        
-        {activo === "horarios" && 
-        <p>Contenido de actividad</p>}
-      
-        
-        </div>
       </div>
   )
 }
