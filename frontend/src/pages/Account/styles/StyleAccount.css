@@ -1,0 +1,194 @@
+.account-page-container{
+    width: 80%;
+}
+
+body{
+    font-family: "'Poppins', sans-serif";
+    font-weight: 600;
+}
+
+.barra-navegacion{
+  width: 100%;
+  margin: 20px auto;
+  padding-left: 2%;
+}
+
+.opciones{
+    display: flex;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.opcion-slc{
+    color: #1e3a8a; /* texto azul */
+  font-weight: 600;
+  padding: 10px 20px;
+  
+  border-bottom-color: 3px #1e3a8a; /* linea azul abajo */
+}
+
+.opcion{
+    background: none;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  color: #4b4b4b;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  border-bottom: 3px solid transparent;
+  &:hover{
+    color: #1e3a8a; /* azul hover */
+  }
+  
+}
+
+
+
+
+.usuario-info-basica{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: 20px;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    
+    width:max-content;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.opciones-usuario {
+    margin-left: auto;
+    padding-right: 5%;
+    gap: 10%;
+    flex-direction: column;
+}
+
+.boton-opcion{
+    
+    width:100%;
+    padding: 5%;
+    margin: 10%;
+    background-color:#624185 ;
+    border-radius: 12px;
+    font-size: large;
+    color: white;
+
+    &:hover { background-color: rgba(255,255,255,0.2); 
+        border-radius: 3 ; 
+        color: black;
+    }
+}
+
+
+.usuario-nombre h1{
+  font-weight: 900;
+}
+
+.usuario-nombre h2{
+    font-weight: 9;
+}
+.usuario-nombre h3{
+    font-weight: 9;
+}
+img{
+    max-width: 100%;
+  border-radius: 50%;
+}
+.foto-usuario{
+    padding-left: 3%;
+    padding-right: 3%;
+    max-width: 15%;
+  height: auto;
+  display: block;
+  object-fit:cover;
+}
+
+.contenedor-cambia{
+  width: 100%;
+}
+
+
+.contenedor-info{
+    display:inline-flex;
+    gap: 20px;
+    justify-content: start;
+
+}
+
+.tabla-info{
+    width: 500px;
+    border-collapse: collapse;
+  margin: 20px auto;
+  margin-left: 5%;
+  background: #f9fdff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgb(152, 119, 251);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.tabla-info h3 {
+  color: #457b9d;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  width: 100%;
+  font-weight: 900;
+}
+
+.tabla-historial th,
+.tabla-info th {
+  text-align: left;
+  padding: 15px;
+  color: #333;
+  font-weight: 900;
+  width: 50%;
+  border-bottom: 2px solid #ccc;
+}
+
+.tabla-historial td,
+.tabla-info td {
+  padding: 12px;
+  color: #222;
+  width: 50%;
+  border-bottom: 2px solid #ccc;
+}
+
+.tabla-historial tr:last-child td,
+.tabla-info tr:last-child td {
+  border-bottom: none;
+}
+.tabla-historial tr:last-child td,
+.tabla-info tr:last-child th {
+  border-bottom: none;
+}
+
+.boton-nav-tabla{
+  background: #457b9d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.tabla-historial{
+  width: 1000px;
+  table-layout: fixed;
+    border-collapse: collapse;
+  margin: 20px auto;
+  margin-left: 5%;
+  background: #f9fdff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgb(152, 119, 251);
+  font-family: 'Segoe UI', sans-serif;
+}
+

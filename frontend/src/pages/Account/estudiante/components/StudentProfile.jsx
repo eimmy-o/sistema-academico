@@ -47,10 +47,16 @@ export default function StudentProfile({ student, onEdit, onToggleStatus, onSave
   }
 
   const show = (field) => (editMode && editable.has(field));
-
+  const items = [
+    { key: "informacion-basica",   label: "Datos personales" },
+    { key: "historial-academico",  label: "Datos académicos" },
+    { key: "calificaciones",       label: "Cursos inscritos", disabled: true }, // quita disabled si ya tienes contenido
+    { key: "actividad",            label: "Actividad",        disabled: true },
+  ];
+  
   return (
     <section className="profile">
-      <header className="profile__header">
+      {/* <header className="profile__header">
         <div className="profile__identity">
           <img className="profile__avatar" src={student.photoUrl} alt={`Foto de ${student.firstName} ${student.lastName}`} loading="lazy" />
           <div className="profile__title">
@@ -80,14 +86,16 @@ export default function StudentProfile({ student, onEdit, onToggleStatus, onSave
           )}
           <div className="profile__last-access">Último acceso: {student.lastAccess}</div>
         </div>
-      </header>
+      </header> */}
 
-      <nav className="tabs" aria-label="Secciones de perfil">
+      
+
+      {/* <nav className="tabs" aria-label="Secciones de perfil">
         <button className="tabs__item tabs__item--active">Datos personales</button>
         <button className="tabs__item" disabled>Datos académicos</button>
         <button className="tabs__item" disabled>Cursos inscritos</button>
         <button className="tabs__item" disabled>Actividad</button>
-      </nav>
+      </nav> */}
 
       <div className="profile__content--single">
         <section className="card">

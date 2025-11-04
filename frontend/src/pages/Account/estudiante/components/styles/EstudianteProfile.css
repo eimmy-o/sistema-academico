@@ -234,3 +234,37 @@
     font-size: 1rem;
   }
   
+
+  /* === Shell que ocupa toda la pantalla === */
+html, body {
+  height: 100%;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr; /* sidebar + contenido */
+  height: 100dvh; /* usa la altura del viewport (mejor en móviles) */
+}
+
+/* Columna de contenido (a la derecha del sidebar) */
+.app-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;   /* clave para que el overflow funcione bien en flex/grid */
+  overflow: hidden; /* evita doble scroll en la página */
+}
+
+/* Área scrolleable dentro del contenido */
+.app-scroll {
+  flex: 1;
+  min-height: 0;   /* importante para que tome 100% de alto disponible */
+  overflow-y: auto; /* aquí vive TU página y hace scroll si se necesita */
+  padding: 1.5rem; /* opcional */
+}
+
+/* Tu layout de perfil centrado dentro del área scrolleable */
+.profile-layout {
+  max-width: 1100px;
+  margin: 0 auto;     /* centra el contenido */
+  min-height: 100%;   /* ocupa todo el alto del contenedor scrolleable */
+}

@@ -1,31 +1,23 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import EstudiantesPage from "./pages/estudiantes/EstudiantesPage";
-import Home from "./pages/Home";
-import Prueba from "./pages/Prueba";
-import ThemeToggle from "./components/estudiantes/ThemeToggle";  
+import { Box } from '@mui/material';
+import './App.css';
+import { Navbar } from './components/Navbar';
+import { AppRouter } from './router/AppRouter';
+import { useLocation } from 'react-router-dom';
 
 function App() {
-
+  const location = useLocation()
+  const noNavRoutes = ['/login']
+  const hideNavBar = noNavRoutes.includes(location.pathname)
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<Home />} />
-    //     <Route path="/estudiantes" element={<EstudiantesPage />} />
-    //     <Route path="/prueba" element={<Prueba/>} />
-    //   </Routes>
-    // </BrowserRouter>
-
-    <>
-    <ThemeToggle />  
-    {/* <StudentProfile
-      student={student}
-      onEdit={() => alert("Editar perfil")}
-      onToggleStatus={() => alert("Cambiar estado")}
-    /> */}
-    <EstudiantesPage></EstudiantesPage>
-  </>
-
-  );
+    <Box sx={{ display: 'flex' }}>
+      {!hideNavBar && (
+        <>
+          <Navbar />
+        </>
+      )}
+      <AppRouter />
+    </Box>
+  )
 }
 
 export default App;
