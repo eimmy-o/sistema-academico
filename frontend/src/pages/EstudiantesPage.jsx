@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getEstudiantes, deleteEstudiante } from "../api/estudiantes";
 import EstudiantesList from "../components/estudiantes/EstudiantesList";
 import EstudianteForm from "../components/estudiantes/EstudianteForm";
+import StudentProfile from "../components/estudiantes/EstudianteProfile";
 
 function EstudiantesPage() {
   const [estudiantes, setEstudiantes] = useState([]);

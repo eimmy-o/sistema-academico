@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import "./styles/EstudiantesList.css";
+import "./styles/mainStyles.css";
 
 function EstudiantesList({ estudiantes = [], eliminarEstudiante }) {
   if (!Array.isArray(estudiantes)) {

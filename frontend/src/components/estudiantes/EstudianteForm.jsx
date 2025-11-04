@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createEstudiante } from "../../api/estudiantes";
 import "./styles/EstudianteForm.css";
+import "./styles/mainStyles.css";
 
 function EstudianteForm({ onEstudianteCreado }) {
   const [matricula, setMatricula] = useState("");

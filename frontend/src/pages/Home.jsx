@@ -19,6 +19,9 @@ function Home() {
         <Link to="/materias" style={styles.linkButton}>
           Módulo de Materias
         </Link>
+        <Link to="/prueba" style={styles.linkButton}>
+          Módulo de pruebas
+        </Link>
       </div>
     </div>
   );

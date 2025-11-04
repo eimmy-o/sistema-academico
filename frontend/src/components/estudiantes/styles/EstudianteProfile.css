@@ -1,0 +1,236 @@
+/* Layout general del perfil */
+.profile-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* 24px */
+    padding: 1.5rem;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Poppins", Roboto, "Segoe UI", sans-serif;
+    max-width: 1100px; /* Para que no se estire infinito */
+  }
+  
+  /* ========== HEADER SUPERIOR ========== */
+  
+  .profile-header-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px solid #dcdcdc;
+    border-radius: 0.75rem; /* 12px */
+    padding: 1rem 1.25rem;
+    background-color: #fff;
+    gap: 1rem;
+  }
+  
+  .profile-header-left {
+    display: flex;
+    gap: 1rem;
+    min-width: 250px;
+  }
+  
+  .profile-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+  }
+  
+  .profile-main-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-name {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .profile-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: #3a3a3a;
+  }
+  
+  .profile-matricula {
+    color: #3a3a3a;
+  }
+  
+  .profile-status-chip {
+    background-color: #4ade80; /* verde suave */
+    color: #1a1a1a;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #3fbf66;
+  }
+  
+  .profile-type {
+    font-size: 0.9rem;
+    color: #4b5563; /* gris medio */
+  }
+  
+  .profile-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    min-width: 220px;
+  }
+  
+  .btn-primary {
+    background-color: #4a2d88; /* morado */
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    filter: brightness(1.05);
+  }
+  
+  .btn-outline {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid #4a2d88;
+    cursor: pointer;
+  }
+  
+  .btn-outline:hover {
+    background-color: #f6f3ff;
+  }
+  
+  .profile-last-access {
+    font-size: 0.8rem;
+    color: #4b5563;
+    text-align: right;
+    line-height: 1.2;
+  }
+  
+  /* ========== TABS ========== */
+  
+  .profile-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #444;
+  }
+  
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    color: #4b4b4b;
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .tab-btn-active {
+    color: #4a2d88; /* morado activo */
+    border-bottom: 3px solid #4a2d88;
+  }
+  
+  /* ========== GRILLA DE TARJETAS (DOS COLUMNAS) ========== */
+  
+  .profile-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem; /* 16px */
+  }
+  
+  @media (max-width: 800px) {
+    .profile-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Tarjeta tipo "Datos Personales" */
+  .info-card {
+    border: 2px solid #45c3d7; /* celestito tipo el borde de tu imagen */
+    border-radius: 0.75rem;
+    background-color: #ffffff;
+    padding: 1rem 1rem 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  }
+  
+  .info-card-header {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4a2d88; /* morado titulo card */
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+    /* Podrías poner display:flex + gap + iconito más adelante */
+  }
+  
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #cfeef2; /* línea celestita */
+    font-size: 0.95rem;
+  }
+  
+  .info-row:last-child {
+    border-bottom: none;
+  }
+  
+  .info-label {
+    font-weight: 600;       /* <- ESTE BOLD es lo que pediste */
+    color: #000000;
+    flex: 0 0 45%;
+    max-width: 45%;
+    word-break: break-word;
+  }
+  
+  .info-value {
+    font-weight: 400;
+    color: #1a1a1a;
+    flex: 1;
+    text-align: right;
+    word-break: break-word;
+  }
+  
+  /* Contenido provisional de otras pestañas */
+  .placeholder-tab {
+    border: 1px solid #dcdcdc;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background-color: #fff;
+  }
+  
+  .placeholder-tab h3 {
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 1rem;
+  }
+  
