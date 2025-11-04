@@ -11,7 +11,7 @@ const student = {
   status: { label: "Activo", tone: "success" },
   scholarshipText: "Becado",
   lastAccess: "12 Oct 2025 · 10:42",
-  photoUrl: "https://i.pravatar.cc/160?img=4",
+  photoUrl: "../src/assets/perfil.png",
   email: "juan.perez@adem.edu",
   phone: "+593 994940102",
   address: "Mikasa 1320",
