@@ -4,23 +4,23 @@ import { useNavigate } from "react-router-dom"
 const coursesNavOptions = [
   {
     text: 'Inicio',
-    path: '/courses'
+    path: '/courses/pages/CoursesHome.jsx'
   },
   {
     text: 'Evaluaciones',
-    path: '/courses/assessments'
+    path: '/courses/components/assessments/AssessmentPage.jsx'
   },
   {
     text: 'Calificaciones',
-    path: '/courses/grades',
+    path: '/courses/components/grades/Grades.jsx',
   },
   {
     text: 'Asistencia',
-    path: '/courses/attendance'
+    path: '/courses/components/attendance/AttendancePage.jsx'
   },
   {
     text: 'Personas',
-    path: '/courses/users'
+    path: '/courses/components/users/Users.jsx'
   }
 ]
 

@@ -1,19 +1,13 @@
 import { Route, Routes } from "react-router-dom"
-import { CoursesHome } from "./CoursesHome"
-import { Grades } from "./components/Grades/Grades"
-import { AttendancePage } from "./components/attendance/AttendancePage"
-import { AssessmentPage } from "./components/assessments/AssessmentPage"
-import { Users } from "./components/users/Users"
-import { CoursesNavBar } from "./CoursesNavBar"
-import { Box, IconButton, useMediaQuery } from "@mui/material"
-import MenuIcon from '@mui/icons-material/Menu'
-import { useState } from "react"
 import { Course } from "./Course"
+import { CourseDetailRoutes } from "./CourseDetailRoutes";
 
 export const CoursesRoutes = () => {
     return (
             <Routes>
                 <Route path="/" element={<Course />}/>
+                <Route path="pages/*" element={<CourseDetailRoutes />} />
+                <Route path="components/*" element={<CourseDetailRoutes />} />
             </Routes>
         )
 }

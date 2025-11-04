@@ -1,4 +1,4 @@
-import '../../Styles/coursesStyles.css'
+import '../../Styles/courseDetailStyle.css'
 
 export const AssessmentPage = () => {
   return (

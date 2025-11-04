@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import { CoursesHome } from "./CoursesHome"
+import { CoursesHome } from "./pages/CoursesHome"
 import { Grades } from "./components/Grades/Grades"
 import { AttendancePage } from "./components/attendance/AttendancePage"
 import { AssessmentPage } from "./components/assessments/AssessmentPage"
@@ -9,7 +9,7 @@ import { Box, IconButton, useMediaQuery } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from "react"
 
-export const CoursesRoutes = () => {
+export const CourseDetailRoutes = () => {
     const isMobile = useMediaQuery('(max-width: 768px)')
     const [isMenuClicked, setIsMenuClicked] = useState(false)
 

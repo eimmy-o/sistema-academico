@@ -10,42 +10,47 @@ export const Course = () => {
       codigoMateria: 'SOFG1006',
       paralelo: 1,
       hexColor: '#a5a1c9',
-      path : '/courses/pages/Curso_1'
+      path : './pages/CoursesHome.jsx'
     },
     {
       materia: 'Emprendimiento e Innovación',
       pao: 'II PAO 2025',
       codigoMateria: 'ADMG1005',
       paralelo: 5,
-      hexColor: '#199eb7'
+      hexColor: '#199eb7',
+      path : './pages/CoursesHome.jsx'
     },
     {
       materia: 'Ingeniería de Software I',
       pao: 'II PAO 2025',
       codigoMateria: 'SOFG1007',
       paralelo: 2,
-      hexColor: '#008400'
+      hexColor: '#008400',
+      path : './pages/CoursesHome.jsx'
     },
     {
       materia: 'Sistemas Operativos',
       pao: 'II PAO 2025',
       codigoMateria: 'CCPG1056',
       paralelo: 1,
-      hexColor: '#f16258'
+      hexColor: '#f16258',
+      path : './pages/CoursesHome.jsx'
     },
     {
       materia: 'Análisis de Algoritmos',
       pao: 'II PAO 2025',
       codigoMateria: 'CCPG1036',
       paralelo: 3,
-      hexColor: '#e261b8'
+      hexColor: '#e261b8',
+      path : './pages/CoursesHome.jsx'
     },
     {
       materia: 'Inglés V',
       pao: 'II PAO 2025',
       codigoMateria: 'IDIG1010',
       paralelo: 4,
-      hexColor: '#809b36'
+      hexColor: '#809b36',
+      path : './pages/CoursesHome.jsx'
     },
   ]
 
