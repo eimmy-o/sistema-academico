@@ -4,7 +4,7 @@
     --text: #1f2937;
     --muted: #6b7280;
     --brand: #5b6bff;
-    --primary: #5b6bff;
+    --primary: #7385ff;
     --primary-contrast: #ffffff;
     --stroke: #e5e7eb;
     --success-bg: #e7f6ec;
@@ -13,18 +13,47 @@
     --warning-fg: #9a6a02;
     --danger-bg: #fde8e8;
     --danger-fg: #ae1c1c;
-    --radius-xl: 20px;
     --radius-lg: 14px;
     --shadow: 0 10px 24px rgba(16,24,40,.08);
   }
 
-  
+/* === TEMA OSCURO === */
+:root[data-theme="dark"]{
+  --bg: #0f172a;          /* fondo app (slate-900) */
+  --card: #0b1220;        /* cards */
+  --text: #e5e7eb;        /* texto */
+  --muted: #9ca3af;       /* texto secundario */
+  --brand: #8ea2ff;
+  --primary: #7385ff;
+  --primary-contrast: #0b1220;
+  --stroke: #1f2a44;      /* bordes */
+  --success-bg: #09341e;
+  --success-fg: #7ee2a5;
+  --warning-bg: #4a3b14;
+  --warning-fg: #ffd47a;
+  --danger-bg: #3a1616;
+  --danger-fg: #ff9b9b;
+  --shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+  /* Botón de tema (opcional estético) */
+.btn--icon{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+}
+.btn--icon svg{ width: 18px; height: 18px; }
   *{ box-sizing: border-box; }
 
   
   /* elimnar esto despues */
  body {
-    display: block;             
+    display: block;    
+    background-color: var(--bg);         
+  }
+
+  .btn--icon {
+    background: var(--bg);
   }
 /* ------------------ */
 
@@ -34,7 +63,6 @@
     background: var(--bg);
     color: var(--text);
     padding: 10px;
-    border-radius: var(--radius-xl);
     font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";   
     width: min(100%, 1200px);  /* o aumenta el max-width a 1200/1280/etc. */
     margin: 0 auto;  
@@ -106,7 +134,8 @@
     padding: 10px 14px;
     border-radius: 12px;
     border: 1px solid var(--stroke);
-    background: #fff;
+    background: var(--bg);
+    color: var(--text);
     cursor: pointer;
     font-weight: 600;
     transition: transform .05s ease, box-shadow .2s ease, background .2s ease;
@@ -164,7 +193,6 @@
   }
 
 
-  /* ------------------ */
   
   /* Grid dentro de la tarjeta: lista vertical */
   .grid--one{

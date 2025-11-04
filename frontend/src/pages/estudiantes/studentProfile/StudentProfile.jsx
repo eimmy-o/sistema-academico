@@ -3,6 +3,7 @@ import "./StudentProfile.css";
 import StatusBadge from "./StatusBadge";
 import InfoRow from "./InfoRow";
 
+
 export default function StudentProfile({ student, onEdit, onToggleStatus }) {
   return (
     <section className="profile">

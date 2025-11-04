@@ -3,7 +3,7 @@ import EstudiantesPage from "./pages/EstudiantesPage";
 import Home from "./pages/Home";
 import Prueba from "./pages/Prueba";
 import StudentProfile from "./pages/estudiantes/studentProfile/StudentProfile";
-
+import ThemeToggle from ".//pages/estudiantes/studentProfile/ThemeToggle";  
 const student = {
   firstName: "Juan",
   lastName: "Pérez",
@@ -15,7 +15,7 @@ const student = {
   email: "juan.perez@adem.edu",
   phone: "+593 994940102",
   address: "Mikasa 1320",
-  birthDate: "20/10/2010",
+  birthDate: "20/10/2007",
   gender: "M",
   idNumber: "0857123456",
   maritalStatus: "Divorciado",
@@ -33,13 +33,14 @@ function App() {
     //   </Routes>
     // </BrowserRouter>
 
-    
+    <>
+    <ThemeToggle />  
     <StudentProfile
       student={student}
       onEdit={() => alert("Editar perfil")}
       onToggleStatus={() => alert("Cambiar estado")}
     />
-  
+  </>
 
   );
 }
