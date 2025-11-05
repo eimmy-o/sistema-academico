@@ -11,7 +11,7 @@ export default function StudentHeader({
   lastAccess,         // ej. "12 Oct 2025 · 10:42"
   onPrimary,          // callback del botón principal
   primaryLabel = "Editar perfil",
-  onSecondary,        // callback opcional (cambiar estado)
+  onSecondary,        // callback opcional (cambiar estado) tecnicamente solo disponible para admins
   secondaryLabel = "Cambiar estado",
   showSecondary = false,
 }) {

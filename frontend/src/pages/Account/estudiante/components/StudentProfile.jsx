@@ -3,12 +3,13 @@ import React from "react";
 import "./StudentProfile.css";
 import StatusBadge from "./StatusBadge";
 import InfoRow from "./InfoRow";
+import StudentHeader from "./StudentHeader";
 
 export default function StudentProfile({ student, onEdit, onToggleStatus, onSave, userCanToggle=false }) {
   const [editMode, setEditMode] = React.useState(false);
 
   // Qué campos se pueden editar
-  const editable = new Set(["firstName", "lastName", "phone", "address", "city", "province", "birthDate", "gender", "maritalStatus", "enrollment"]);
+  const editable = new Set(["firstName", "lastName", "phone", "address", "city", "province", "birthDate", "gender", "maritalStatus"]);
 
   // Estado del formulario
   const [formData, setFormData] = React.useState(() => pickEditable(student));
@@ -22,7 +23,6 @@ export default function StudentProfile({ student, onEdit, onToggleStatus, onSave
       address: s.address ?? "",
       birthDate: s.birthDate ?? "",
       gender: s.gender ?? "",
-      // idNumber: s.idNumber ?? "",
       maritalStatus: s.maritalStatus ?? "",
       enrollment: s.enrollment ?? "",
       city: s.city ?? "",
@@ -50,52 +50,34 @@ export default function StudentProfile({ student, onEdit, onToggleStatus, onSave
   const items = [
     { key: "informacion-basica",   label: "Datos personales" },
     { key: "historial-academico",  label: "Datos académicos" },
-    { key: "calificaciones",       label: "Cursos inscritos", disabled: true }, // quita disabled si ya tienes contenido
-    { key: "actividad",            label: "Actividad",        disabled: true },
+    { key: "calificaciones",       label: "Cursos inscritos"}, 
+    { key: "actividad",            label: "Actividad" },
   ];
+
+  // decide qué hace cada botón según el modo
+  const primaryLabel   = editMode ? "Guardar" : "Editar perfil";
+  const onPrimary      = editMode ? handleSave : () => setEditMode(true);
+  const showSecondary  = editMode ? true : userCanToggle;          // en edición mostramos "Cancelar"
+  const secondaryLabel = editMode ? "Cancelar" : "Cambiar estado";
+  const onSecondary    = editMode ? handleCancel : onToggleStatus;
   
   return (
     <section className="profile">
-      {/* <header className="profile__header">
-        <div className="profile__identity">
-          <img className="profile__avatar" src={student.photoUrl} alt={`Foto de ${student.firstName} ${student.lastName}`} loading="lazy" />
-          <div className="profile__title">
-            <h1 className="profile__name">
-              {student.firstName} {student.lastName}
-            </h1>
-            <div className="profile__meta">
-              <span className="profile__code">{student.code}</span>
-              <StatusBadge label={student.status.label} tone={student.status.tone} />
-            </div>
-            <div className="profile__submeta">{student.scholarshipText}</div>
-          </div>
-        </div>
+      <StudentHeader
+        photoUrl={student.photoUrl}
+        firstName={student.firstName}
+        lastName={student.lastName}
+        code={student.code}
+        status={student.status}
+        scholarshipText={student.scholarshipText}
+        lastAccess={student.lastAccess}
+        onPrimary={onPrimary}
+        primaryLabel={primaryLabel}
+        onSecondary={onSecondary}
+        secondaryLabel={secondaryLabel}
+        showSecondary={showSecondary}
+      />
 
-        <div className="profile__actions">
-          {!editMode ? (
-            <>
-              <button className="btn btn--primary" onClick={() => setEditMode(true)}>Editar perfil</button>
-              {userCanToggle && (
-              <button className="btn btn--ghost" onClick={onToggleStatus}>Cambiar estado</button>)}
-            </>
-          ) : (
-            <>
-              <button className="btn btn--primary" onClick={handleSave}>Guardar</button>
-              <button className="btn" onClick={handleCancel}>Cancelar</button>
-            </>
-          )}
-          <div className="profile__last-access">Último acceso: {student.lastAccess}</div>
-        </div>
-      </header> */}
-
-      
-
-      {/* <nav className="tabs" aria-label="Secciones de perfil">
-        <button className="tabs__item tabs__item--active">Datos personales</button>
-        <button className="tabs__item" disabled>Datos académicos</button>
-        <button className="tabs__item" disabled>Cursos inscritos</button>
-        <button className="tabs__item" disabled>Actividad</button>
-      </nav> */}
 
       <div className="profile__content--single">
         <section className="card">

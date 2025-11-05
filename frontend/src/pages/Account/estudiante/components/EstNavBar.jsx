@@ -7,7 +7,7 @@ import { HistorialAcademico } from "../HistorialAcademicoEstudiante";
 export const EstNavBar = () => {
   const [activo, setActivo] = useState("informacion-basica");
 
-  // Ejemplo de datos (usa los tuyos reales)
+  // Ejemplo de datos 
   const student = {
     firstName: "Juan",
     lastName: "Pérez",
@@ -15,7 +15,7 @@ export const EstNavBar = () => {
     status: { label: "Activo", tone: "success" },
     scholarshipText: "Becado",
     lastAccess: "12 Oct 2025 · 10:42",
-    photoUrl: "../src/assets/perfil.png",
+    photoUrl: "src/assets/perfil.png",
     email: "juan.perez@adem.edu",
     phone: "+593 994940102",
     address: "Mikasa 1320",
@@ -44,7 +44,7 @@ export const EstNavBar = () => {
       )}
 
       {activo === "historial-academico" && (
-           <HistorialAcademico/>
+        <HistorialAcademico/>
       )}
 
 
