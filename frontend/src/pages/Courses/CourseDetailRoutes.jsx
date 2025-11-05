@@ -26,11 +26,10 @@ export const CourseDetailRoutes = () => {
             }
             {isMenuClicked && isMobile && <CoursesNavBar flexDirection="column" isMobile={isMobile}/>}
             <Routes>
-                <Route path="/" element={<CoursesHome />}/>
-                <Route path="/grades" element={<Grades />}/>
-                <Route path="/attendance" element={<AttendancePage />}/>
-                <Route path="/assessments" element={<AssessmentPage />}/>
-                <Route path="/users" element={<Users />}/>
+                <Route path="components/grades" element={<Grades />}/>
+                <Route path="components/attendance" element={<AttendancePage />}/>
+                <Route path="components/assessments" element={<AssessmentPage />}/>
+                <Route path="components/users" element={<Users />}/>
             </Routes>
         </Box>
     )

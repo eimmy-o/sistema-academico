@@ -3,7 +3,7 @@ import '../Styles/courseDetailStyle.css'
 export const CoursesHome = () => {
   return (
     <div className="container">
-      <p> Inicio </p>
+      <h1>  HOALALLAL </h1>
     </div>
   )
 }

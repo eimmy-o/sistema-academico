@@ -10,7 +10,7 @@ export const Course = () => {
       codigoMateria: 'SOFG1006',
       paralelo: 1,
       hexColor: '#a5a1c9',
-      path : './pages/CoursesHome.jsx'
+      path : 'pages/CoursesHome'
     },
     {
       materia: 'Emprendimiento e Innovación',
@@ -18,7 +18,7 @@ export const Course = () => {
       codigoMateria: 'ADMG1005',
       paralelo: 5,
       hexColor: '#199eb7',
-      path : './pages/CoursesHome.jsx'
+      path : 'pages/CoursesHome'
     },
     {
       materia: 'Ingeniería de Software I',
@@ -26,7 +26,7 @@ export const Course = () => {
       codigoMateria: 'SOFG1007',
       paralelo: 2,
       hexColor: '#008400',
-      path : './pages/CoursesHome.jsx'
+      path : 'pages/CoursesHome'
     },
     {
       materia: 'Sistemas Operativos',
@@ -34,7 +34,7 @@ export const Course = () => {
       codigoMateria: 'CCPG1056',
       paralelo: 1,
       hexColor: '#f16258',
-      path : './pages/CoursesHome.jsx'
+      path : 'pages/CoursesHome'
     },
     {
       materia: 'Análisis de Algoritmos',
@@ -42,7 +42,7 @@ export const Course = () => {
       codigoMateria: 'CCPG1036',
       paralelo: 3,
       hexColor: '#e261b8',
-      path : './pages/CoursesHome.jsx'
+      path : 'pages/CoursesHome'
     },
     {
       materia: 'Inglés V',
@@ -50,7 +50,7 @@ export const Course = () => {
       codigoMateria: 'IDIG1010',
       paralelo: 4,
       hexColor: '#809b36',
-      path : './pages/CoursesHome.jsx'
+      path : 'pages/CoursesHome'
     },
   ]
 
