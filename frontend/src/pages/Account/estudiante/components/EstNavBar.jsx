@@ -4,32 +4,44 @@ import { StudentTabs } from "./StudentTabs";
 import StudentProfile from "../components/StudentProfile";
 import { HistorialAcademico } from "../HistorialAcademicoEstudiante";
 
+
+// 1) estado en el padre
+const initialStudent = {
+  firstName: "Juan",
+  lastName: "Pérez",
+  code: "ABC-123456",
+  status: { label: "Activo", tone: "success" },
+  scholarshipText: "Becado",
+  lastAccess: "12 Oct 2025 · 10:42",  
+  photoUrl: "../../src/assets/perfil.png",           // mejor desde /public
+  email: "juan.perez@adem.edu",
+  phone: "+593 994940102",
+  address: "Mikasa 1320",
+  birthDate: "2007-10-20",
+  gender: "M",
+  documentType: "Cédula",
+  idNumber: "0857123456",
+  maritalStatus: "Divorciado",
+  enrollment: "ABC123456",
+  enrollmentDate: "2023-10-20",
+  province: "Guayas",
+  city: "Guayaquil",
+};
+
 export const EstNavBar = () => {
   const [activo, setActivo] = useState("informacion-basica");
+  const [student, setStudent] = useState(initialStudent);  
 
-  // Ejemplo de datos 
-  const student = {
-    firstName: "Juan",
-    lastName: "Pérez",
-    code: "STU-0001",
-    status: { label: "Activo", tone: "success" },
-    scholarshipText: "Becado",
-    lastAccess: "12 Oct 2025 · 10:42",
-    photoUrl: "src/assets/perfil.png",
-    email: "juan.perez@adem.edu",
-    phone: "+593 994940102",
-    address: "Mikasa 1320",
-    birthDate: "2007-10-20",
-    gender: "M",
-    documentType: "Cédula",
-    idNumber: "0857123456",
-    maritalStatus: "Divorciado",
-    enrollment: "ABC123456",
-    enrollmentDate: "2023-10-20",
-    province: "Guayas",
-    city: "Guayaquil",
+
+
+  // 2) guardar: actualiza el estado con lo editado
+  const handleSave = (patch) => {
+    setStudent((prev) => ({ ...prev, ...patch }));
+    
+    // codigo que usare despues cuando me conecta con la api
+    // await api.updateStudent(prev.id, patch);
   };
-
+  
   return (
     <div>
       <StudentTabs active={activo} onChange={setActivo} />
@@ -39,7 +51,7 @@ export const EstNavBar = () => {
           student={student}
           onEdit={() => {}}
           onToggleStatus={() => {}}
-          onSave={(data) => console.log("guardar", data)}
+          onSave={handleSave}
         />
       )}
 
