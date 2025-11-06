@@ -1,4 +1,4 @@
-import '../Styles/courseDetailStyle.css'
+import '../../Styles/courseDetailStyle.css'
 
 export const CoursesHome = () => {
   return (

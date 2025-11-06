@@ -1,38 +1,42 @@
 import { List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material"
-import { useNavigate } from "react-router-dom"
+// 🛑 Eliminamos la importación de useNavigate, ya que no vamos a cambiar de ruta.
+// import { useNavigate } from "react-router-dom" 
 
 const coursesNavOptions = [
   {
     text: 'Inicio',
-    path: 'pages/CoursesHome'
+    tabName: 'home' // ⬅️ Usamos un nombre limpio que coincida con el switch en el padre.
   },
   {
     text: 'Evaluaciones',
-    path: 'components/assessments'
+    tabName: 'evaluations' // ⬅️ Nuevo nombre para la pestaña.
   },
   {
     text: 'Calificaciones',
-    path: 'components/grades',
+    tabName: 'grades',
   },
   {
     text: 'Asistencia',
-    path: 'components/attendance'
+    tabName: 'attendance'
   },
   {
     text: 'Personas',
-    path: 'components/users'
+    tabName: 'people'
   }
 ]
 
-export const CoursesNavBar = ({flexDirection = 'row', isMobile}) => {
-  const navigate = useNavigate()
+// ⬅️ Recibimos las nuevas props: onTabChange (la función para cambiar el estado) y activeTab (para el estilo)
+export const CoursesNavBar = ({flexDirection = 'row', isMobile, onTabChange, activeTab}) => {
+  // 🛑 Eliminamos 'const navigate = useNavigate()'
+  
   return (
     <div>
       <List 
         sx={{
           display: 'flex', 
           gap: 3, 
-          width: '32rem', 
+          // Ajusté el ancho a 'fit-content' para mejor flexibilidad. Puedes dejar '32rem' si lo prefieres.
+          width: 'fit-content', 
           padding: 0, 
           flexDirection: flexDirection ,
           boxShadow: isMobile ? '0px 2px 8px rgba(0,0,0,0.4)' : '0,0,0,0', 
@@ -40,9 +44,15 @@ export const CoursesNavBar = ({flexDirection = 'row', isMobile}) => {
         {coursesNavOptions.map((item) => (
         <ListItem key={item.text} disablePadding>
           <ListItemButton 
-            onClick={() => navigate(item.path)} 
+            // ⬅️ Al hacer click, llamamos a la función del padre y le pasamos el nombre de la pestaña
+            onClick={() => onTabChange(item.tabName)} 
             sx={{
-              padding: '0 0.5rem'
+              padding: '0 0.5rem',
+              // ⬅️ Opcional: Estilo visual para saber en qué pestaña estamos
+              backgroundColor: item.tabName === activeTab ? 'rgba(98, 65, 133, 0.1)' : 'transparent',
+              '&:hover': {
+                  backgroundColor: item.tabName === activeTab ? 'rgba(98, 65, 133, 0.15)' : 'rgba(0, 0, 0, 0.04)'
+              }
             }}
           >
             <ListItemText
@@ -51,7 +61,8 @@ export const CoursesNavBar = ({flexDirection = 'row', isMobile}) => {
                   sx={{
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 600,
-                    color: '#624185',
+                    // ⬅️ Opcional: Cambiamos el color si está activa
+                    color: item.tabName === activeTab ? '#624185' : 'rgba(0, 0, 0, 0.6)',
                   }}
                 >
                   {item.text}
