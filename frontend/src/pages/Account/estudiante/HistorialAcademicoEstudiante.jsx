@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from "react";
+import "../../Account/styles/StyleAccount.css"
 
 export const HistorialAcademico = () => {
   // Datos placeholder simulando filas de una base de datos

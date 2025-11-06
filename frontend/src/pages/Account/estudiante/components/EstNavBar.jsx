@@ -3,6 +3,7 @@ import { useState } from "react";
 import { StudentTabs } from "./StudentTabs";
 import StudentProfile from "../components/StudentProfile";
 import { HistorialAcademico } from "../HistorialAcademicoEstudiante";
+import { ProfNavBar } from "../../profesor/components/ProfNavBar";
 
 
 // 1) estado en el padre
@@ -42,36 +43,6 @@ const initialTeacher = {
 };
 
 
-// Componente muy simple de perfil de profesor (placeholder)
-function TeacherProfile({ teacher }) {
-  return (
-    <section className="card">
-      <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-        <img
-          src={teacher.photoUrl}
-          alt="Foto del profesor"
-          style={{ width: 64, height: 64, borderRadius: "50%" }}
-        />
-        <div>
-          <h3 style={{ margin: 0 }}>
-            {teacher.firstName} {teacher.lastName}
-          </h3>
-          <p style={{ margin: 0, opacity: 0.8 }}>{teacher.department}</p>
-          <p style={{ margin: 0, opacity: 0.8 }}>{teacher.email}</p>
-        </div>
-      </div>
-
-      <hr />
-      <ul>
-        <li><strong>Código:</strong> {teacher.code}</li>
-        <li><strong>Estado:</strong> {teacher.status.label}</li>
-        <li><strong>Último acceso:</strong> {teacher.lastAccess}</li>
-        <li><strong>Teléfono:</strong> {teacher.phone}</li>
-        <li><strong>Oficina:</strong> {teacher.office}</li>
-      </ul>
-    </section>
-  );
-}
 
 export const EstNavBar = () => {
   const [activo, setActivo] = useState("informacion-basica");
@@ -120,9 +91,11 @@ export const EstNavBar = () => {
 
 
 
-      <StudentTabs active={activo} onChange={setActivo} />
+      
       {role === "estudiante" ? (
+
         <>
+          <StudentTabs active={activo} onChange={setActivo} />
           {activo === "informacion-basica" && (
             <StudentProfile
               student={student}
@@ -138,7 +111,7 @@ export const EstNavBar = () => {
         </>) : (
             <>
               
-              {activo === "informacion-basica" && <TeacherProfile teacher={teacher} />}
+              {<ProfNavBar/>}
 
           </>
         )}
