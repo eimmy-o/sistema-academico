@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react";
-import "../../Account/styles/StyleAccount.css"
+import "../../Account/styles/ProfileStyle.css"
 
 export const HistorialAcademico = () => {
   // Datos placeholder simulando filas de una base de datos
@@ -34,8 +34,8 @@ export const HistorialAcademico = () => {
   };
 
   return (
-    <div className="tabla-historial">
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+    <div className="card">
+      <table className="history-table" style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
           <tr>
             <th>Año termino</th>

@@ -274,3 +274,10 @@ body{
   .info{ grid-template-columns:1fr; }
   .info__label{ margin-bottom:2px; }
 }
+
+.history-table{
+    width: 500px;
+    border-collapse: collapse;
+  background: #f9fdff;
+  padding: 10px;
+}

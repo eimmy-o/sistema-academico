@@ -1,6 +1,6 @@
 // ProfessorHeader.jsx
 import React from 'react'
-import StatusBadge from "../../estudiante/components/StatusBadge";
+import StatusBadge from "../../components_general/StatusBadge";
 
 export default function ProfessorHeader({
   photoUrl,

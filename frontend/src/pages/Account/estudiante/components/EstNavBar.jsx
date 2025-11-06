@@ -29,28 +29,13 @@ const initialStudent = {
   city: "Guayaquil",
 };
 
-const initialTeacher = {
-  firstName: "María",
-  lastName: "Gómez",
-  code: "DOC-987654",
-  status: { label: "Activo", tone: "success" },
-  lastAccess: "06 Nov 2025 · 09:10",
-  photoUrl: "../../src/assets/perfilMujer.png",
-  email: "maria.gomez@adem.edu",
-  phone: "+593 990000000",
-  department: "Matemáticas",
-  office: "Bloque B - 203",
-};
-
-
-
 export const EstNavBar = () => {
   const [activo, setActivo] = useState("informacion-basica");
   const [student, setStudent] = useState(initialStudent);  
 
   // NUEVO: estado de rol
   const [role, setRole] = useState("estudiante"); // 'estudiante' | 'profesor'
-  const [teacher] = useState(initialTeacher);
+  
 
   // 2) guardar: actualiza el estado con lo editado
   const handleSave = (patch) => {

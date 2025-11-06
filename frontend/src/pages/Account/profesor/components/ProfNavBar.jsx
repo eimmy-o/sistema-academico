@@ -9,7 +9,7 @@ import { ProfessorHistorial } from "./ProfessorHistorial";
 const initialProfessor = {
   firstName: "Alejandra",
   lastName: "Gomez",
-  code: "PCR-354978",
+  code: "PCR-146879",
   status: { label: "Activo", tone: "success" },
   scholarshipText: "Profesor",
   lastAccess: "12 Oct 2025 · 10:42",  

@@ -1,8 +1,8 @@
 // ProfessorProfile.jsx
 import React from "react";
-import "./ProfessorProfile.css";
-import StatusBadge from "../../estudiante/components/StatusBadge";
-import InfoRow from "../../estudiante/components/InfoRow";
+import "../../styles/ProfileStyle.css";
+import StatusBadge from "../../components_general/StatusBadge";
+import InfoRow from "../../components_general/InfoRow";
 import ProfessorHeader from "./ProfessorHeader";
 
 export default function ProfessorProfile({ professor, onEdit, onToggleStatus, onSave, userCanToggle=false }) {
@@ -150,7 +150,7 @@ export default function ProfessorProfile({ professor, onEdit, onToggleStatus, on
                      editable={show("maritalStatus")}
                      onChange={handleChange} />
 
-            <InfoRow label="Matrícula"
+            <InfoRow label="Credencial"
                      name="enrollment"
                      value={show("enrollment") ? formData.enrollment : professor.enrollment}
                      editable={show("enrollment")}

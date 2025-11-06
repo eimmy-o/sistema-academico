@@ -1,8 +1,8 @@
 
 import React from "react";
 import "./AdministradorProfile.css";
-import StatusBadge from "../../estudiante/components/StatusBadge";
-import InfoRow from "../../estudiante/components/InfoRow";
+import StatusBadge from "../../components_general/StatusBadge";
+import InfoRow from "../../components_general/InfoRow";
 import  AdministradorHeader  from "./AdministradorHeader";
 
 

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 import { EstNavBar } from "./components/EstNavBar";
-import ThemeToggle from "./components/ThemeToggle";
+import ThemeToggle from "../components_general/ThemeToggle";
 
 export const EstudiantesPage = () => {
   const [estudiantes, setEstudiantes] = useState([]);

@@ -1,5 +1,5 @@
 // components/estudiantes/StudentHeader.jsx
-import StatusBadge from "./StatusBadge";
+import StatusBadge from "../../components_general/StatusBadge";
 
 export default function StudentHeader({
   photoUrl,

@@ -1,8 +1,8 @@
 // StudentProfile.jsx
 import React from "react";
-import "./StudentProfile.css";
-import StatusBadge from "./StatusBadge";
-import InfoRow from "./InfoRow";
+import "../../styles/ProfileStyle.css";
+import StatusBadge from "../../components_general/StatusBadge";
+import InfoRow from "../../components_general/InfoRow";
 import StudentHeader from "./StudentHeader";
 
 export default function StudentProfile({ student, onEdit, onToggleStatus, onSave, userCanToggle=false }) {
