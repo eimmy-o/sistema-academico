@@ -275,9 +275,21 @@ body{
   .info__label{ margin-bottom:2px; }
 }
 
-.history-table{
-    width: 500px;
-    border-collapse: collapse;
-  background: #f9fdff;
-  padding: 10px;
+.hisory-table{
+    width: 100%;
+  text-align: center;
 }
+
+td, th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-fila{
+    border-bottom:1px dashed var(--stroke);
+}
+
+.table-fila:last-child{
+    border-bottom:none;
+}
+

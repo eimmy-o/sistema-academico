@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState } from "react";
 import "../../styles/ProfileStyle.css"
+import { ListaEstudiantesProfesor } from "./ListaEstudiantesProfesor";
 
 export const ProfessorHistorial = () => {
   // Datos placeholder simulando filas de una base de datos
-  const datos = Array.from({ length: 35 }, (_, i) => ({
+  const datos = Array.from({ length: 12 }, (_, i) => ({
     ano_termino: `Termino ${i + 1}`,
     codigo: `${i + 1}`,
     materia:`Computacion ${i + 1}`,
@@ -33,6 +34,10 @@ export const ProfessorHistorial = () => {
     }
   };
 
+
+
+  
+
   return (
     <div className="card">
       <table className="history-table" style={{ width: "100%", borderCollapse: "collapse" }}>
@@ -49,13 +54,13 @@ export const ProfessorHistorial = () => {
         </thead>
         <tbody>
           {filasActuales.map((fila) => (
-            <tr key={fila.codigo}>
+            <tr key={fila.codigo} className='table-fila'>
               <td>{fila.ano_termino}</td>
               <td>{fila.codigo}</td>
               <td>{fila.materia}</td>
               <td>{fila.promedio}</td>
               <td>{fila.estado}</td>
-              <td>Ver listado</td>
+              <td onClick={<ListaEstudiantesProfesor />}>Ver listado</td>
             </tr>
           ))}
         </tbody>

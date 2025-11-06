@@ -45,9 +45,9 @@ export const HistorialAcademico = () => {
             <th>Estado</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {filasActuales.map((fila) => (
-            <tr key={fila.codigo}>
+            <tr key={fila.codigo} className='table-fila'>
               <td>{fila.ano_termino}</td>
               <td>{fila.codigo}</td>
               <td>{fila.materia}</td>
@@ -75,3 +75,4 @@ export const HistorialAcademico = () => {
     </div>
   );
 }
+

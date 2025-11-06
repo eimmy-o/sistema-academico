@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ProfessorTabs } from "./ProfessorTabs";
 import ProfessorProfile from "./ProfessorProfile";
 import { ProfessorHistorial } from "./ProfessorHistorial";
+import { ListaEstudiantesProfesor } from "./ListaEstudiantesProfesor";
 
 
 // 1) estado en el padre
@@ -56,7 +57,8 @@ export const ProfNavBar = () => {
       )}
 
       {activo === "historial-academico" && (
-        <ProfessorHistorial/>
+          <ProfessorHistorial />
+
       )}
 
     </div>

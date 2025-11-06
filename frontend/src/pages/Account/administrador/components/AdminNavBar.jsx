@@ -3,23 +3,23 @@ import AdministradorProfile from "./AdministradorProfile";
 
 // 1) estado en el padre
 const initialAdmin = {
-  firstName: "Alejandra",
-  lastName: "Gomez",
-  code: "PCR-354978",
+  firstName: "Alberto",
+  lastName: "Casablanca",
+  code: "A-002",
   status: { label: "Activo", tone: "success" },
-  scholarshipText: "Profesor",
+  scholarshipText: "Administrador",
   lastAccess: "12 Oct 2025 · 10:42",  
-  photoUrl: "../../src/assets/perfilMujer.png",           // mejor desde /public
-  email: "alejan-gomez@adem.edu",
-  phone: "+593 998746234",
-  address: "Isla trinitaria",
-  birthDate: "1999-12-29",
-  gender: "F",
+  photoUrl: "../../src/assets/react.svg",           // mejor desde /public
+  email: "alberto-casablanca@adem.edu",
+  phone: "+593 998546212",
+  address: "Mapasingue este",
+  birthDate: "1989-12-29",
+  gender: "M",
   documentType: "Cédula",
-  idNumber: "1315648",
-  maritalStatus: "Casada",
-  enrollment: "PCR-146879",
-  enrollmentDate: "2018-03-14",
+  idNumber: "09874695231",
+  maritalStatus: "Divorciado",
+  enrollment: "A-002",
+  enrollmentDate: "2016-03-15",
   province: "Guayas",
   city: "Guayaquil",
 };

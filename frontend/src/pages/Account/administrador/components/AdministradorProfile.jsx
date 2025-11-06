@@ -151,7 +151,7 @@ export default function AdministradorProfile({ administrador, onEdit, onToggleSt
                      editable={show("maritalStatus")}
                      onChange={handleChange} />
 
-            <InfoRow label="Matrícula"
+            <InfoRow label="Credencial"
                      name="enrollment"
                      value={show("enrollment") ? formData.enrollment : administrador.enrollment}
                      editable={show("enrollment")}
