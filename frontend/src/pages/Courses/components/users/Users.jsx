@@ -1,9 +1,10 @@
 import '../../Styles/coursesStyles.css'
-
+import { Student }  from "./Student";
 export const Users = () => {
   return (
     <div className="container">
-      <p> Personas </p>
+      <Student/>
+      {/* <p> Personas </p> */}
     </div>
   )
 }

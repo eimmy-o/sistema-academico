@@ -93,7 +93,6 @@ export const EstNavBar = () => {
     // botón para alternar rol
     const toggleRole = () => {
       setRole((r) => (r === "estudiante" ? "profesor" : "estudiante"));
-      // opcional: cuando cambias de rol, puedes resetear la pestaña activa
       setActivo("informacion-basica");
     };
   
