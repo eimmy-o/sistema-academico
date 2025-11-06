@@ -50,8 +50,7 @@ export default function StudentProfile({ student, onEdit, onToggleStatus, onSave
   const items = [
     { key: "informacion-basica",   label: "Datos personales" },
     { key: "historial-academico",  label: "Datos académicos" },
-    { key: "calificaciones",       label: "Cursos inscritos"}, 
-    { key: "actividad",            label: "Actividad" },
+    { key: "personas",       label: "Personas"} 
   ];
 
   // decide qué hace cada botón según el modo

@@ -2,8 +2,7 @@ export function StudentTabs({ active, onChange }) {
     const items = [
       { key: "informacion-basica",  label: "Datos personales" },
       { key: "historial-academico", label: "Datos académicos"},
-      { key: "calificaciones",      label: "Cursos inscritos"},
-      { key: "actividad",           label: "Actividad"},
+      { key: "personas",      label: "Personas"}
     ];
   
     return (
