@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { CoursesHome } from "./CoursesHome"
-import { Grades } from "./components/Grades/Grades"
+import { Grades } from "./components/grades/Grades"
 import { AttendancePage } from "./components/attendance/AttendancePage"
 import { AssessmentPage } from "./components/assessments/AssessmentPage"
 import { Users } from "./components/users/Users"
