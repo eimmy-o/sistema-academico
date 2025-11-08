@@ -1,0 +1,210 @@
+/* CONTENEDOR GENERAL */
+.grades-container {
+  background-color: #f9fafb;
+  padding: 2.5rem;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: #1e293b;
+}
+
+/* TITULOS */
+.grades-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.grades-subtitle {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+/* FILTROS */
+.filters-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.filters-card label {
+  display: block;
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 0.4rem;
+}
+
+.filters-card select {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.filters-card select:focus {
+  border-color: #60a5fa;
+}
+
+.apply-btn-container {
+  display: flex;
+  align-items: end;
+}
+
+.apply-btn-container button {
+  width: 100%;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.apply-btn-container button:hover {
+  background-color: #2563eb;
+}
+
+/* ESTADISTICAS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.stat-value {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-top: 0.2rem;
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+}
+
+.stat-card.azul .stat-value {
+  color: #2563eb;
+}
+
+.stat-card.verde .stat-value {
+  color: #16a34a;
+}
+
+.stat-card.amarillo .stat-value {
+  color: #ca8a04;
+}
+
+/* TABLA */
+.table-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table-card thead {
+  background-color: #f1f5f9;
+}
+
+.table-card th {
+  padding: 0.9rem 1rem;
+  color: #334155;
+  font-weight: 600;
+}
+
+.table-card td {
+  padding: 0.9rem 1rem;
+  color: #334155;
+}
+
+.table-card tr.even {
+  background-color: #ffffff;
+}
+
+.table-card tr.odd {
+  background-color: #f9fafb;
+}
+
+.table-card tr:hover {
+  background-color: #eff6ff;
+  transition: background 0.2s;
+}
+
+/* NOMBRE Y TIPO */
+.nombre {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.tipo {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* ESTADOS */
+.estado-entregado {
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.estado.pendiente {
+  background-color: #fef9c3;
+  color: #92400e;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.estado.atrasado {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* PUNTAJES */
+.puntaje .verde {
+  color: #16a34a;
+}
+
+.puntaje .amarillo {
+  color: #ca8a04;
+}
+
+.puntaje .rojo {
+  color: #dc2626;
+}
