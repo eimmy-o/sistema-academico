@@ -1,75 +1,74 @@
-
+// Este horario es para el rol de profesor, una vez establecido cómo se va a identificar eso se modifica
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styleCalendar.css";
 import { exportCalendarData } from "./CalendarUtils";
 
-// Días y horas del horario base (para conttruir la tabla)
+// Días y horas base
 const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 const HOURS = ["09:00-11:00", "11:00-13:00", "13:00-15:00", "15:00-17:00"];
 
-// Materias con su respectiva información y franjas horarias (por ahora datos simulados)
-const COURSES = [
+// Materias que dicta
+const TEACHING_COURSES = [
   {
     id: 1,
-    name: "Cálculo",
-    code: "CAL101",
-    aula: "9M-A104",
-    color: "#e89d41ff",
+    name: "Álgebra Lineal",
+    code: "MAT210",
+    aula: "9M-A203",
+    color: "#f59e0b",
     slots: [
-      { day: 0, start: "09:00", end: "11:00" },
+      { day: 1, start: "09:00", end: "11:00" },
       { day: 3, start: "11:00", end: "13:00" },
     ],
   },
   {
     id: 2,
-    name: "Fundamentos de Programación",
-    code: "FP120",
-    aula: "11D-A003",
-    color: "#4e86d9ff",
-    slots: [{ day: 1, start: "11:00", end: "13:00" }],
+    name: "Estructuras de Datos",
+    code: "INF330",
+    aula: "11D-A102",
+    color: "#3b82f6",
+    slots: [{ day: 2, start: "13:00", end: "15:00" }],
   },
   {
     id: 3,
-    name: "Química",
-    code: "QUI200",
-    aula: "9M-A005",
-    color: "#5ca141ff",
-    slots: [{ day: 2, start: "09:00", end: "11:00" }],
+    name: "Programación de Sistemas",
+    code: "INF400",
+    aula: "9M-B204",
+    color: "#10b981",
+    slots: [{ day: 4, start: "09:00", end: "11:00" }],
   },
 ];
 
-// Exámenes con fecha, hora y aula (por ahora datos simulados)
+// Evaluaciones
 const EXAMS = [
-  { id: 1, name: "Cálculo Vectorial", date: "2025-11-15", hour: "09:00", aula: "9M-A104", color: "#e89d41ff" },
-  { id: 2, name: "Fundamentos de Programación", date: "2025-11-17", hour: "13:00", aula: "11D-A003", color: "#4e86d9ff" },
-  { id: 3, name: "Química", date: "2025-11-19", hour: "11:00", aula: "9M-A005", color: "#5ca141ff" },
-  { id: 4, name: "Desarrollo de aplicaciones webs y móviles", date: "2025-11-20", hour: "09:00", aula: "9M-A005", color: "#8f41a1ff" },
+  { id: 1, name: "Álgebra Lineal", date: "2025-11-15", hour: "09:00", aula: "9M-A203", color: "#f59e0b" },
+  { id: 2, name: "Estructuras de datos", date: "2025-11-18", hour: "13:00", aula: "11D-A102", color: "#3b82f6" },
+  { id: 3, name: "Programación de sistemas", date: "2025-11-22", hour: "09:00", aula: "9M-B204", color: "#10b981" },
 ];
 
-// Lista de tareas pendientes (por ahora datos simulados)
-const TASKS = [
-  { id: 1, title: "Evaluación de Cálculo", due: "2025-11-05", courseId: 1 },
-  { id: 2, title: "Tarea 1 - FP", due: "2025-11-07", courseId: 2 },
-  { id: 3, title: "Informe de Química", due: "2025-11-11", courseId: 3 },
+// Actividades pendientes del profesor (calificar, subir notas, revisar trabajos, etc.)
+const GRADING_TASKS = [
+  { id: 1, title: "Lección de Álgebra", due: "2025-11-06", courseId: 1 },
+  { id: 2, title: "Tarea de Estructuras", due: "2025-11-10", courseId: 2 },
+  { id: 3, title: "Taller de Programación", due: "2025-11-13", courseId: 3 },
 ];
 
-export default function CalendarPage() {
+export default function TeacherCalendarPage() {
   const [search, setSearch] = useState("");
   const [showExams, setShowExams] = useState(false);
   const [taskFilter, setTaskFilter] = useState("all");
   const navigate = useNavigate();
 
-  // Muestra la fecha actual
+  // Fecha actual
   const today = new Date().toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
 
-  // Filtro de materias según la búsqueda del usuario
-  const filteredCourses = COURSES.filter(c =>
+  // Filtro de cursos que dicta el profesor
+  const filteredCourses = TEACHING_COURSES.filter(c =>
     c.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Filtra las tareas según el rango seleccionado (todas, semana o mes)
-  const filteredTasks = TASKS.filter(t => {
+  // Filtra las tareas según el rango de tiempo
+  const filteredTasks = GRADING_TASKS.filter(t => {
     if (taskFilter === "all") return true;
     const taskDate = new Date(t.due);
     const now = new Date();
@@ -79,7 +78,7 @@ export default function CalendarPage() {
     return true;
   });
 
-  // Obtiene los cursos que se dictan en determinado día y hora (por ahora simulados)
+  // Obtiene las materias en una franja específica
   function getCoursesAt(dayIndex, hourRange) {
     const [startHour, endHour] = hourRange.split("-");
     return filteredCourses.filter(c =>
@@ -93,21 +92,21 @@ export default function CalendarPage() {
         {/* ENCABEZADO */}
         <div className="header">
           <div>
-            <div className="title">📅 Calendario</div>
+            <div className="title">👨‍🏫 Calendario del Profesor</div>
             <div className="subtitle">Hoy es {today}</div>
           </div>
 
-          {/* Buscador y toggle */}
+          {/* Buscador y switch entre clases y exámenes */}
           <div className="controls">
             <input
               className="input"
-              placeholder="Buscar materia o código"
+              placeholder="Buscar asignatura"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
 
             <div className="toggle">
-              <span>Horario</span>
+              <span>Clases</span>
               <label className="switch">
                 <input
                   type="checkbox"
@@ -124,7 +123,7 @@ export default function CalendarPage() {
         {/* TABLA PRINCIPAL */}
         <div className="card">
           {!showExams ? (
-            // 📘 HORARIO DE CLASES
+            // HORARIO DE CLASES
             <table className="timetable">
               <thead>
                 <tr>
@@ -145,7 +144,7 @@ export default function CalendarPage() {
                               key={course.id}
                               className="pill"
                               style={{ background: course.color, cursor: "pointer" }}
-                              onClick={() => navigate(`/courses/pages/Course_1`)} // Aquí se debe cambiar la ruta cuando tengamos las materias específicas
+                              onClick={() => navigate(`/courses/pages/Course_${course.id}`)}
                             >
                               <div className="pill-title">{course.name}</div>
                               <div className="pill-info">{course.code} • {course.aula}</div>
@@ -185,7 +184,7 @@ export default function CalendarPage() {
                           <div
                             className="pill"
                             style={{ background: exam.color, cursor: "pointer" }}
-                            onClick={() => navigate(`/courses/pages/Course_1`)} // Aquí se debe cambiar la ruta cuando tengamos las materias específicas
+                            onClick={() => navigate(`/courses/pages/Course_${exam.id}`)}
                           >
                             <div className="pill-title">{exam.name}</div>
                             <div className="pill-info">{exam.aula}</div>
@@ -200,10 +199,10 @@ export default function CalendarPage() {
           )}
         </div>
 
-        {/* SECCIÓN DE TAREAS */}
+        {/* SECCIÓN DE ACTIVIDADES DE LOS CURSOS */}
         <div className="tasks-section">
           <div className="tasks-header">
-            <h3>Próximas tareas y evaluaciones</h3>
+            <h3>Actividades pendientes</h3>
             <select className="select" value={taskFilter} onChange={(e) => setTaskFilter(e.target.value)}>
               <option value="all">Todas</option>
               <option value="week">Esta semana</option>
@@ -211,16 +210,15 @@ export default function CalendarPage() {
             </select>
           </div>
 
-          {/* Muestra cada tarea con su color y curso */}
           <div className="tasks-grid">
             {filteredTasks.map(t => {
-              const course = COURSES.find(c => c.id === t.courseId);
+              const course = TEACHING_COURSES.find(c => c.id === t.courseId);
               return (
                 <div
                   key={t.id}
                   className="task-card"
                   style={{ borderTop: `5px solid ${course.color}`, cursor: "pointer" }}
-                  onClick={() => navigate(`/courses/pages/Course_1`)} // Aquí se debe cambiar la ruta cuando tengamos las materias específicas
+                  onClick={() => navigate(`/courses/pages/Course_${course.id}`)}
                 >
                   <div className="task-main">
                     <h4>{t.title}</h4>
@@ -237,11 +235,11 @@ export default function CalendarPage() {
           <div className="export-section">
             <h4>Exportar</h4>
             <div className="export-buttons">
-              <button onClick={() => exportCalendarData("pdf", COURSES)}>PDF</button>
-              <button onClick={() => exportCalendarData("excel", COURSES)}>EXCEL</button>
-              <button onClick={() => exportCalendarData("csv", COURSES)}>CSV</button>
-              <button onClick={() => exportCalendarData("json", COURSES)}>JSON</button>
-              <button onClick={() => exportCalendarData("txt", COURSES)}>TXT</button>
+              <button onClick={() => exportCalendarData("pdf", TEACHING_COURSES)}>PDF</button>
+              <button onClick={() => exportCalendarData("excel", TEACHING_COURSES)}>EXCEL</button>
+              <button onClick={() => exportCalendarData("csv", TEACHING_COURSES)}>CSV</button>
+              <button onClick={() => exportCalendarData("json", TEACHING_COURSES)}>JSON</button>
+              <button onClick={() => exportCalendarData("txt", TEACHING_COURSES)}>TXT</button>
             </div>
           </div>
         </div>

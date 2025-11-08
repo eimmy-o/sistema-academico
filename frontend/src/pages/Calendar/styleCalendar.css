@@ -1,0 +1,285 @@
+/* Variables globales */
+:root {
+  --primary-a: #AA7EF7;
+  --primary-b: #5B4381;
+  --primary-surface: #E5D7FB;
+  --bg: #FFFFFF;
+  --text: #212121;
+  --text-secondary: #6B6B6B;
+  --border: #E9E9EF;
+  --shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  --radius: 20px;
+}
+
+/* Configuración base del box */
+* {
+  box-sizing: border-box;
+}
+
+/* Contenedor principal del horario */
+.schedule-wrap {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Encabezado */
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-b);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin-top: 0.3rem;
+}
+
+/* Filtros-Inputs de control */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.input,
+.select {
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 0 12px;
+  background: #fff;
+}
+
+/* Tarjetas y tablas */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+/* Tabla de horarios */
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--radius);
+  overflow: hidden;
+  table-layout: fixed;
+  min-width: 900px;
+}
+
+.timetable th,
+.timetable td {
+  border: 1px solid #eee;
+  text-align: center;
+  padding: 14px;
+  word-wrap: break-word;
+  width: calc(100% / 6);
+  vertical-align: middle;
+}
+
+.timetable th {
+  background: var(--primary-surface);
+  color: var(--primary-b);
+}
+
+.time {
+  background: #fafafa;
+  font-weight: 600;
+  color: var(--text-secondary);
+  width: 130px;
+}
+
+/* Bloques de materias en la tabla */
+.pill {
+  padding: 10px 12px;
+  border-radius: 14px;
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  margin: 3px 0;
+  transition: transform 0.2s ease;
+  word-wrap: break-word;
+}
+
+.pill:hover {
+  transform: scale(1.05);
+}
+
+/* Sección de tareas */
+.tasks-section {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.tasks-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Tarjetas individuales de tarea */
+.task-card {
+  flex: 1 1 250px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-main h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.task-date {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.task-course {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Botón para marcar tarea como completada */
+.task-check {
+  border: none;
+  background: var(--primary-surface);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  color: var(--primary-b);
+  font-weight: bold;
+}
+
+/* Exportación */
+.export-section {
+  margin-top: 1.5rem;
+}
+
+.export-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.export-buttons button {
+  background: var(--primary-b);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.export-buttons button:hover {
+  background: var(--primary-a);
+}
+
+/* Sección de exámenes */
+.exam-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.exam-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.exam-room {
+  color: var(--text-secondary);
+}
+
+/* Switch (interruptor visual) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 22px;
+  margin: 0 8px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-b);
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 800px) {
+  .tasks-grid {
+    flex-direction: column;
+  }
+}
