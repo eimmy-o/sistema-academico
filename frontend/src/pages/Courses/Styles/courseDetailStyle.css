@@ -15,7 +15,7 @@
 /*SECCIÓN DE DATOS*/
 .course-data-section {
     display: flex;
-    gap: 40px; /* Espacio entre los dos ítems */
+    gap: 40px; 
     padding: 15px 0;
     border-bottom: 1px solid #ddd;
     margin-bottom: 30px;
@@ -28,7 +28,7 @@
 
 .data-label {
     font-weight: 700;
-    color: #624185; /* Tu color principal */
+    color: #624185; 
     margin-bottom: 5px;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -88,6 +88,6 @@
     margin-right: 15px;
 }
 
-.type-pdf { background-color: #f16258; } /* Rojo */
-.type-docx { background-color: #199eb7; } /* Azul */
-.type-mp4 { background-color: #008400; } /* Verde */
+.type-pdf { background-color: #f16258; } 
+.type-docx { background-color: #199eb7; } 
+.type-mp4 { background-color: #008400; } 

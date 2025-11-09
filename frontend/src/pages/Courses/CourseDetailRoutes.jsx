@@ -17,7 +17,7 @@ export const CourseDetailRoutes = () => {
     const renderContent = () => {
         switch (activeTab) {
             case 'home':
-                return <CoursesHome />; // Muestra el contenido de "Inicio"
+                return <CoursesHome />; 
             case 'evaluations':
                 return <AssessmentPage />;
             case 'grades':
@@ -33,7 +33,6 @@ export const CourseDetailRoutes = () => {
 
     return (
         <Box sx={{padding: {xs: 0, md: '2rem 1.5rem'}, width: '100%'}}>
-            {/* --- LAYOUT DEL NAV BAR --- */}
             {isMobile ? 
                 <IconButton onClick={() => setIsMenuClicked(!isMenuClicked)}>
                     <MenuIcon/> 
