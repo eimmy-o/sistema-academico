@@ -1,5 +1,5 @@
 .account-page-container{
-    width: 80%;
+    width: 60%;
 }
 
 body{
@@ -105,9 +105,7 @@ img{
   object-fit:cover;
 }
 
-.contenedor-cambia{
-  width: 100%;
-}
+
 
 
 .contenedor-info{
@@ -119,7 +117,7 @@ img{
 
 .tabla-info{
     width: 500px;
-    border-collapse: collapse;
+    border-collapse: separate;
   margin: 20px auto;
   margin-left: 5%;
   background: #f9fdff;
@@ -128,7 +126,6 @@ img{
   box-shadow: 0 2px 6px rgb(152, 119, 251);
   font-family: 'Segoe UI', sans-serif;
 }
-
 
 .tabla-info h3 {
   color: #457b9d;
@@ -140,7 +137,6 @@ img{
   font-weight: 900;
 }
 
-.tabla-historial th,
 .tabla-info th {
   text-align: left;
   padding: 15px;
@@ -150,7 +146,6 @@ img{
   border-bottom: 2px solid #ccc;
 }
 
-.tabla-historial td,
 .tabla-info td {
   padding: 12px;
   color: #222;
@@ -158,37 +153,10 @@ img{
   border-bottom: 2px solid #ccc;
 }
 
-.tabla-historial tr:last-child td,
 .tabla-info tr:last-child td {
   border-bottom: none;
 }
-.tabla-historial tr:last-child td,
 .tabla-info tr:last-child th {
   border-bottom: none;
-}
-
-.boton-nav-tabla{
-  background: #457b9d;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
-  margin: 0 5px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.2s;
-}
-
-.tabla-historial{
-  width: 1000px;
-  table-layout: fixed;
-    border-collapse: collapse;
-  margin: 20px auto;
-  margin-left: 5%;
-  background: #f9fdff;
-  border-radius: 12px;
-  padding: 10px;
-  box-shadow: 0 2px 6px rgb(152, 119, 251);
-  font-family: 'Segoe UI', sans-serif;
 }
 

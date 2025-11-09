@@ -1,8 +1,7 @@
 import './styles/DashStyles.css'
-import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
-  const navigate = useNavigate();
+
   const cardContent = [
     {
       materia: 'Desarrollo de Aplicaciones Web y Móviles',
@@ -67,7 +66,7 @@ export const Dashboard = () => {
       <br />
       <div className='dash-card'>
         {cardContent.map((item) => (
-          <div className='card-content' key={item.materia} onClick={() => navigate("/courses")}>
+          <div className='card-content' key={item.materia}>
             <div className='card-color-subsection' style={{backgroundColor: item.hexColor}}>
             </div>
             <div className='course-info'>
