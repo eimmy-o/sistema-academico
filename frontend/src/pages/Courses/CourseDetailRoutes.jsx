@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CoursesHome } from "./components/home/CoursesHome"
-import { Grades } from "./components/Grades/Grades"
+import  Grades  from "./components/Grades/Grades"
 import { AttendancePage } from "./components/attendance/AttendancePage"
 import { AssessmentPage } from "./components/assessments/AssessmentPage"
 import { Users } from "./components/users/Users"
