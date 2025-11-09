@@ -4,16 +4,24 @@ import autoTable from "jspdf-autotable";
 import * as XLSX from "xlsx";
 
 export function exportCalendarData(type, data) {
+  // Si data no es un array, evita romper la app
+  if (!Array.isArray(data) || data.length === 0) {
+    console.warn("No hay datos para exportar o el formato es incorrecto.");
+    return;
+  }
+
   // Formatea los datos para exportaciones generales
   const formattedData = data.map((c) => ({
-    Materia: c.name,
-    Código: c.code,
-    Aula: c.aula,
-    Horario: c.slots
-      .map(
-        (s) => `${["Lun", "Mar", "Mié", "Jue", "Vie"][s.day]} ${s.start}-${s.end}`
-      )
-      .join(", "),
+    Materia: c.name || "—",
+    Código: c.code || "—",
+    Aula: c.aula || c.room || "—",
+    Horario:
+      c.slots?.map(
+        (s) =>
+          `${["Lun", "Mar", "Mié", "Jue", "Vie"][s.day] || ""} ${
+            s.start
+          }-${s.end}`
+      ).join(", ") || c.time || "—",
   }));
 
   switch (type) {
@@ -30,12 +38,12 @@ export function exportCalendarData(type, data) {
       doc.text(`Generado el ${today}`, 14, 28);
 
       // Columnas y filas de la tabla
-      const tableColumn = ["Materia", "Día", "Hora", "Aula"];
-      const tableRows = data.map((course) => [
-        course.name,
-        course.day,
-        course.time,
-        course.room,
+      const tableColumn = ["Materia", "Código", "Aula", "Horario"];
+      const tableRows = formattedData.map((course) => [
+        course.Materia,
+        course.Código,
+        course.Aula,
+        course.Horario,
       ]);
 
       // Inserta la tabla en el PDF
@@ -45,7 +53,6 @@ export function exportCalendarData(type, data) {
         startY: 35,
       });
 
-      // Guarda el archivo
       doc.save("Horario.pdf");
       break;
     }
@@ -72,11 +79,9 @@ export function exportCalendarData(type, data) {
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-
       a.href = url;
       a.download = "Horario.csv";
       a.click();
-
       URL.revokeObjectURL(url);
       break;
     }
@@ -86,14 +91,11 @@ export function exportCalendarData(type, data) {
       const blob = new Blob([JSON.stringify(formattedData, null, 2)], {
         type: "application/json",
       });
-
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-
       a.href = url;
       a.download = "Horario.json";
       a.click();
-
       URL.revokeObjectURL(url);
       break;
     }
@@ -110,16 +112,13 @@ export function exportCalendarData(type, data) {
       const blob = new Blob([txt], { type: "text/plain;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-
       a.href = url;
       a.download = "Horario.txt";
       a.click();
-
       URL.revokeObjectURL(url);
       break;
     }
 
-    /* Formato no válido */
     default:
       console.error("❌ Formato de exportación no válido:", type);
   }
