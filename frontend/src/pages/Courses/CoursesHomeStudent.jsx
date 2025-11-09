@@ -13,7 +13,6 @@ export const CoursesHomeStudent = ({ onBackToProfessorView }) => {
 
   return (
     <div className="att-main">
-      {/* Botón para regresar a la vista del profesor */}
       <button onClick={onBackToProfessorView} className="btn ghost">
         Volver a la vista de profesor
       </button>

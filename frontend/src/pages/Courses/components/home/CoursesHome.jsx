@@ -12,10 +12,9 @@ const staticCourseData = {
 };
 
 export const CoursesHome = () => {
-    // No necesitamos useLocation, useParams o props.
+    
     const currentCourse = staticCourseData; 
     
-    // Función para el material (manteniendo la estructura de "roll down" visual)
     const renderMaterial = (material) => (
         <div className="material-list">
             {material.map((item, index) => (
@@ -30,7 +29,6 @@ export const CoursesHome = () => {
 
     return (
         <div className="course-home-container">
-            {/* --- 1. SECCIÓN DE DATOS (Paralelo y Profesor) --- */}
             <section className="course-data-section">
                 <div className="data-item">
                     <p className="data-label">Paralelo:</p>
@@ -42,7 +40,6 @@ export const CoursesHome = () => {
                 </div>
             </section>
             
-            {/* --- 2. SECCIÓN DE DESCRIPCIÓN --- */}
             <section className="course-description-section">
                 <h2 className="section-title">Descripción</h2>
                 <p className="description-text">
@@ -50,7 +47,6 @@ export const CoursesHome = () => {
                 </p>
             </section>
             
-            {/* --- 3. SECCIÓN DE MATERIAL DISPONIBLE (Roll Down) --- */}
             <section className="course-material-section">
                 <h2 className="section-title">Material Disponible ({currentCourse.material.length})</h2>
                 {renderMaterial(currentCourse.material)}

@@ -41,7 +41,7 @@ export const CoursesNavBar = ({flexDirection = 'row', isMobile, onTabChange, act
         sx={{
           display: 'flex', 
           gap: 3, 
-          // Ajusté el ancho a 'fit-content' para mejor flexibilidad. Puedes dejar '32rem' si lo prefieres.
+          
           width: 'fit-content', 
           padding: 0, 
           flexDirection: flexDirection ,
@@ -50,11 +50,11 @@ export const CoursesNavBar = ({flexDirection = 'row', isMobile, onTabChange, act
         {coursesNavOptions.map((item) => (
         <ListItem key={item.text} disablePadding>
           <ListItemButton 
-            // ⬅️ Al hacer click, llamamos a la función del padre y le pasamos el nombre de la pestaña
+            
             onClick={() => onTabChange(item.tabName)} 
             sx={{
               padding: '0 0.5rem',
-              // ⬅️ Opcional: Estilo visual para saber en qué pestaña estamos
+              
               backgroundColor: item.tabName === activeTab ? 'rgba(98, 65, 133, 0.1)' : 'transparent',
               '&:hover': {
                   backgroundColor: item.tabName === activeTab ? 'rgba(98, 65, 133, 0.15)' : 'rgba(0, 0, 0, 0.04)'
@@ -67,7 +67,7 @@ export const CoursesNavBar = ({flexDirection = 'row', isMobile, onTabChange, act
                   sx={{
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 600,
-                    // ⬅️ Opcional: Cambiamos el color si está activa
+                    
                     color: item.tabName === activeTab ? '#624185' : 'rgba(0, 0, 0, 0.6)',
                   }}
                 >
