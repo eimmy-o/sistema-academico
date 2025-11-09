@@ -2,12 +2,13 @@ import { Route, Routes } from "react-router-dom"
 import { CoursesHome } from "./CoursesHome"
 import { Grades } from "./components/grades/Grades"
 import { AttendancePage } from "./components/attendance/AttendancePage"
-import { AssessmentPage } from "./components/assessments/AssessmentPage"
 import { Users } from "./components/users/Users"
 import { CoursesNavBar } from "./CoursesNavBar"
 import { Box, IconButton, useMediaQuery } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import { useState } from "react"
+import { AssignmentsPage } from "./components/assignments/AssignmentsPage"
+import  AnnouncementsPage  from "./components/announcements/AnnouncementsPage"
 
 export const CoursesRoutes = () => {
   const isMobile = useMediaQuery("(max-width: 768px)")
@@ -34,8 +35,9 @@ export const CoursesRoutes = () => {
         <Route path="/grades" element={<Grades />} />
         {/* Nota: asterisco para subrutas de asistencia */}
         <Route path="/attendance/*" element={<AttendancePage />} />
-        <Route path="/assessments" element={<AssessmentPage />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/assignments" element={<AssignmentsPage />} />
+        <Route path="/announcements" element={<AnnouncementsPage />} />
       </Routes>
     </Box>
   )

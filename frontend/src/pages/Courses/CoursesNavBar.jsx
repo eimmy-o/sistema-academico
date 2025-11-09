@@ -7,8 +7,12 @@ const coursesNavOptions = [
     path: '/courses'
   },
   {
-    text: 'Evaluaciones',
-    path: '/courses/assessments'
+    text: 'Anuncios',
+    path: '/courses/announcements'
+  },
+  {
+    text: 'Actividades',
+    path: '/courses/assignments'
   },
   {
     text: 'Calificaciones',
@@ -28,6 +32,7 @@ export const CoursesNavBar = ({flexDirection = 'row', isMobile}) => {
   const navigate = useNavigate()
   return (
     <div>
+      <h1>Programacion basica</h1>
       <List 
         sx={{
           display: 'flex', 

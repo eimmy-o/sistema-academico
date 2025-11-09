@@ -5,6 +5,7 @@ import { ListaEstudiantesProfesor } from "./ListaEstudiantesProfesor";
 
 export const ProfessorHistorial = () => {
   // Datos placeholder simulando filas de una base de datos
+  const [mostrarLista, setMostrarLista] = useState(false);
   const datos = Array.from({ length: 12 }, (_, i) => ({
     ano_termino: `Termino ${i + 1}`,
     codigo: `${i + 1}`,
@@ -60,11 +61,14 @@ export const ProfessorHistorial = () => {
               <td>{fila.materia}</td>
               <td>{fila.promedio}</td>
               <td>{fila.estado}</td>
-              <td onClick={<ListaEstudiantesProfesor />}>Ver listado</td>
+              <td onClick={() => setMostrarLista(true)}>Ver listado</td>
             </tr>
           ))}
         </tbody>
       </table>
+      {mostrarLista && (
+        <ListaEstudiantesProfesor onClose={() => setMostrarLista(false)} />
+      )}
 
       {/* Controles de paginacion */}
       <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
