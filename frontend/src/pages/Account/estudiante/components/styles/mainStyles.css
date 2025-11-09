@@ -1,0 +1,458 @@
+/* ============= TOKENS BASE / THEME ============= */
+
+/* Tipografía */
+:root {
+    --font-family-base: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+    --fs-display: 44px;
+    --fs-h1: 32px;
+    --fs-h2: 24px;
+    --fs-h3: 20px;         /* rango 18–20 → uso 20px */
+    --fs-body: 16px;
+    --fs-small: 14px;
+    --fs-caption: 12px;    /* rango 12–13 → uso 12px */
+  
+    --fw-bold: 700;
+    --fw-semibold: 600;
+    --fw-medium: 500;
+    --fw-regular: 400;
+  
+    /* Colores */
+    --color-primary-a: #AA7EF7;
+    --color-primary-b: #5B4381;
+    --color-primary-c: #8B77AC;
+    --color-primary-surface: #E5D7FB;
+  
+    --color-neutral-300: #A9A9AB;
+  
+    --color-success: #2ECC71;
+    --color-warning: #F4B740;
+    --color-error: #E65A54;
+  
+    --color-bg-page: #FFFFFF;
+    --color-text-main: #212121;
+    --color-text-secondary: #6B6B6B;
+  
+    /* Bordes / sombras / layout */
+    --radius-card: 24px;
+    --radius-input: 16px;
+    --radius-pill: 9999px;
+  
+    --border-color: #E9E9EF;
+    --border-width: 1px;
+  
+    --shadow-card: 0 10px 24px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.06);
+  
+    --sidebar-width: 220px;
+    --content-max-width: 1280px;
+  
+    --pad-card-block: 24px;
+    --pad-card-inline-desktop: 24px; /* 24–32 */
+    --pad-card-inline-mobile: 16px;  /* 16–20 */
+  
+    --table-header-bg: #F6F7F9; /* puedes ajustar a var(--color-primary-surface) si quieres más marca */
+    --icon-color-default: #5B4381;
+  }
+  
+  /* Reset tipográfico común */
+  body {
+    font-family: var(--font-family-base);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
+    line-height: 1.4;
+    background-color: var(--color-bg-page);
+    color: var(--color-text-main);
+  }
+  
+  /* Helpers de texto */
+  .text-error {
+    color: var(--color-error);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-body);
+    text-align: center;
+  }
+  
+  .h2 {
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-semibold);
+    line-height: 1.3;
+    color: var(--color-text-main);
+  }
+  
+  /* ============= LAYOUT GENERALES ============= */
+  
+  /* Card genérica / contenedor */
+  .card {
+    width: 100%;
+    max-width: var(--content-max-width);
+    background-color: #FFFFFF;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: var(--border-width) solid var(--border-color);
+    margin: 2rem auto;
+    padding: var(--pad-card-block) var(--pad-card-inline-desktop);
+  }
+  
+  @media (max-width: 600px) {
+    .card {
+      padding-left: var(--pad-card-inline-mobile);
+      padding-right: var(--pad-card-inline-mobile);
+    }
+  }
+  
+  /* ============= TABLA DE ESTUDIANTES ============= */
+  
+  .lista-container {
+    /* hereda patrón card */
+    width: 100%;
+    max-width: var(--content-max-width);
+    background-color: #FFFFFF;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: var(--border-width) solid var(--border-color);
+    margin: 2rem auto;
+    padding: var(--pad-card-block) var(--pad-card-inline-desktop);
+  }
+  
+  @media (max-width: 600px) {
+    .lista-container {
+      padding-left: var(--pad-card-inline-mobile);
+      padding-right: var(--pad-card-inline-mobile);
+    }
+  }
+  
+  .lista-container h2 {
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-semibold);
+    line-height: 1.3;
+    color: var(--color-text-main);
+    text-align: center;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: var(--border-width) solid var(--border-color);
+  }
+  
+  .mensaje-vacio,
+  .mensaje-error {
+    text-align: center;
+    color: var(--color-error);
+    margin-top: 1rem;
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-body);
+  }
+  
+  /* tabla responsive wrapper */
+  .tabla-wrapper {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  /* tabla */
+  .tabla-estudiantes {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-small); /* 14px -> tabla densa */
+    color: var(--color-text-main);
+  }
+  
+  .tabla-estudiantes thead th {
+    font-weight: var(--fw-medium);
+    text-align: left;
+    background-color: var(--table-header-bg);
+    color: var(--color-text-main);
+    border-bottom: 2px solid var(--border-color);
+    padding: 10px 12px;
+    white-space: nowrap;
+    line-height: 1.4;
+    font-size: var(--fs-small);
+  }
+  
+  .tabla-estudiantes tbody td {
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding: 10px 12px;
+    font-size: var(--fs-small);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+  
+  .tabla-estudiantes tbody tr:hover {
+    background-color: var(--color-primary-surface); /* resalta fila con surface de marca */
+  }
+  
+  /* Botón eliminar / estado Error */
+  .btn-eliminar {
+    background-color: var(--color-error);
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-small);
+    line-height: 1.2;
+    min-height: 28px; /* chip/badge height guideline */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .16s ease;
+    opacity: 0.8;
+  }
+  
+  .btn-eliminar:hover {
+    opacity: 1;
+  }
+  
+  /* ============= FORMULARIO ============= */
+  
+  .form-container {
+    width: 400px;
+    max-width: 90%;
+    margin: 2rem auto;
+    background-color: #FFFFFF;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: var(--border-width) solid var(--border-color);
+    padding: var(--pad-card-block) var(--pad-card-inline-desktop);
+  }
+  
+  @media (max-width: 600px) {
+    .form-container {
+      padding-left: var(--pad-card-inline-mobile);
+      padding-right: var(--pad-card-inline-mobile);
+    }
+  }
+  
+  .form-container h2 {
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-semibold);
+    text-align: center;
+    color: var(--color-text-main);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: var(--fw-medium);
+    font-size: var(--fs-small);
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+    line-height: 1.3;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    min-height: 44px; /* 44–48 px */
+    border-radius: var(--radius-input);
+    border: var(--border-width) solid var(--border-color);
+    font-size: var(--fs-body);
+    font-family: var(--font-family-base);
+    color: var(--color-text-main);
+    background-color: #FFFFFF;
+    line-height: 1.4;
+    outline: none;
+    transition: box-shadow .16s ease, border-color .16s ease;
+  }
+  
+  .form-group input:focus {
+    border-color: var(--color-primary-b);
+    box-shadow: 0 0 0 3px rgba(91,67,129,0.16);
+  }
+  
+  /* ============= BOTONES ============= */
+  
+  /* Botón primario (filled) */
+  .btn-primary {
+    appearance: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+  
+    min-height: 48px; /* 44–48 px */
+    padding: 0 1rem;
+  
+    border-radius: var(--radius-pill);
+    background-color: var(--color-primary-b);
+    color: #FFFFFF;
+    font-family: var(--font-family-base);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-semibold);
+    line-height: 1.3;
+    transition: filter .16s ease, box-shadow .16s ease;
+  }
+  
+  .btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 10px 24px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.12);
+  }
+  
+  /* Botón secundario (outlined) opcional si lo necesitas más tarde */
+  .btn-secondary {
+    appearance: none;
+    cursor: pointer;
+    user-select: none;
+  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+  
+    min-height: 48px;
+    padding: 0 1rem;
+  
+    border-radius: var(--radius-pill);
+    background-color: transparent;
+    border: var(--border-width) solid var(--color-primary-b);
+    color: var(--color-primary-b);
+  
+    font-family: var(--font-family-base);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-semibold);
+    line-height: 1.3;
+    transition: background-color .16s ease, box-shadow .16s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba(91,67,129,0.08);
+    box-shadow: 0 10px 24px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.06);
+  }
+  
+  /* ============= AVATARES (24–48 px circulares) ============= */
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-primary-surface);
+    color: var(--color-primary-b);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--border-width) solid var(--border-color);
+  }
+  
+  /* Tamaños extra */
+  .avatar.-sm { width:24px; height:24px; min-width:24px; min-height:24px; font-size: var(--fs-caption); }
+  .avatar.-lg { width:48px; height:48px; min-width:48px; min-height:48px; font-size: var(--fs-body); }
+  
+  /* ============= BADGE / CHIP (Success, Warning, Error) ============= */
+  
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;          /* 28–32 px */
+    padding: 0 0.75rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-medium);
+    line-height: 1.2;
+    color: #fff;
+  }
+  
+  .chip.success { background-color: var(--color-success); }
+  .chip.warning { background-color: var(--color-warning); color: #212121; }
+  .chip.error   { background-color: var(--color-error); }
+  
+  /* ============= ICONOS ============= */
+  /* Usa estas utilidades cuando metas <svg> */
+  .icon-20 { width:20px; height:20px; stroke-width:1.5; color: var(--icon-color-default); }
+  .icon-24 { width:24px; height:24px; stroke-width:1.5; color: var(--icon-color-default); }
+  .icon-32 { width:32px; height:32px; stroke-width:1.5; color: var(--icon-color-default); }
+  
+  /* Ej para iconos más bold:
+  .icon-24.-strong { stroke-width:2; }
+  */
+  
+  /* ============= SIDEBAR / TOPBAR (tokens base) ============= */
+  
+  .sidebar {
+    width: var(--sidebar-width);
+    background-color: #FFFFFF;
+    border-right: var(--border-width) solid var(--border-color);
+    padding: 1rem;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .75rem 1rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-medium);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+  
+  .sidebar-item.active {
+    background-color: var(--color-primary-surface);
+    color: var(--color-primary-b);
+  }
+  
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.75rem 1rem;
+    border-bottom: var(--border-width) solid var(--border-color);
+    background-color: #FFFFFF;
+  }
+  
+  .topbar-icon {
+    position: relative;
+    margin-left: 1rem;
+    line-height: 0;
+  }
+  
+  .topbar-icon svg {
+    width:24px;
+    height:24px;
+    color: var(--icon-color-default);
+    stroke-width:1.5;
+  }
+  
+  .topbar-icon .badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 16px;
+    min-height: 16px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-error); /* notificación roja */
+    color: #fff;
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-semibold);
+    line-height: 1.2;
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* ============= DONUT PROGRESS TOKEN PLACEHOLDER ============= */
+  /* Sólo estilos base; el donut real vendrá del SVG/canvas */
+  .progress-donut {
+    --donut-color: var(--color-primary-b);
+    --donut-thickness: 10px;   /* 10–12px */
+    color: var(--donut-color);
+    /* tu SVG debe usar stroke: currentColor; stroke-width: var(--donut-thickness); */
+  }
+  
+
+  /* color   */

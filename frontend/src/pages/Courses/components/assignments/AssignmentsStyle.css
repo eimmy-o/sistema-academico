@@ -1,0 +1,195 @@
+.assignments-container {
+  font-family: "Segoe UI", sans-serif;
+  padding: 20px;
+  background: #f6fbff;
+  color: #222;
+  min-height: 100vh;
+}
+
+/* Header */
+.assignments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.assignments-header h2 {
+  color: #003366;
+  margin: 0;
+}
+
+.assignments-header p {
+  color: #557;
+  margin: 0;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.switch-view-btn,
+.new-task-btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.switch-view-btn {
+  background: #c8e4fa;
+  color: #003366;
+}
+
+.new-task-btn {
+  background: #003366;
+  color: white;
+}
+
+/* Tabla */
+.assignments-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.assignments-table th {
+  text-align: left;
+  background: #e8f3ff;
+  padding: 12px;
+  color: #003366;
+}
+
+.assignments-table td {
+  padding: 10px 12px;
+  border-top: 1px solid #eef5ff;
+}
+
+/* Etiquetas */
+.tag {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.tag.tarea {
+  background: #b0e0ff;
+  color: #003366;
+}
+
+.tag.lección {
+  background: #9fc5ff;
+}
+
+.tag.examen {
+  background: #6fbaff;
+}
+
+/* Estado */
+.status-green {
+  color: #007b55;
+  font-weight: 500;
+}
+
+.student-status {
+  font-weight: 600;
+}
+
+.student-status.delivered {
+  color: #0c9a4c;
+}
+
+.student-status.missing {
+  color: #d43f3a;
+}
+
+/* Boton eliminar */
+.delete-btn {
+  background: #e11d48;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 20, 40, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #003366;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #aacbee;
+  background: #f9fcff;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-row div {
+  flex: 1;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.modal-actions button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.create-btn {
+  background: #003366;
+  color: white;
+}
