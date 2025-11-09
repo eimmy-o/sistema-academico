@@ -1,4 +1,5 @@
 import { List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material"
+import { useState } from 'react';
 
 const coursesNavOptions = [
   {
@@ -25,8 +26,30 @@ const coursesNavOptions = [
 
 export const CoursesNavBar = ({flexDirection = 'row', isMobile, onTabChange, activeTab}) => {
 
+  const [isAttendanceVisible, setIsAttendanceVisible] = useState(false); 
+  
+  const filteredNavOptions = coursesNavOptions.filter(item => {
+
+    if (item.tabName !== 'attendance') {
+      return true;
+    }
+
+    return isAttendanceVisible;
+  });
+
   return (
     <div>
+
+      <button className="switch"
+          onClick={() => setIsAttendanceVisible(!isAttendanceVisible)}
+          style={{ 
+              backgroundColor: isAttendanceVisible ? '#f0f0f0' : '#624185', 
+              color: isAttendanceVisible ? '#624185' : 'white'
+          }}
+      >
+          Switch to {isAttendanceVisible ? 'Student' : 'Professor'} view
+      </button>
+
       <List 
         sx={{
           display: 'flex', 
@@ -36,7 +59,8 @@ export const CoursesNavBar = ({flexDirection = 'row', isMobile, onTabChange, act
           flexDirection: flexDirection ,
           boxShadow: isMobile ? '0px 2px 8px rgba(0,0,0,0.4)' : '0,0,0,0', 
         }}>
-        {coursesNavOptions.map((item) => (
+
+        {filteredNavOptions.map((item) => (
         <ListItem key={item.text} disablePadding>
           <ListItemButton 
             onClick={() => onTabChange(item.tabName)} 

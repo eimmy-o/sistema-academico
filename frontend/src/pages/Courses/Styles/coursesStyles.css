@@ -66,3 +66,21 @@
     margin: 0;
     color: #6c757c;
 }
+
+.switch {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #624185;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newcourse {
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    background-color:#3b0179ff; 
+    color:white; 
+    font-weight: bold ;
+}

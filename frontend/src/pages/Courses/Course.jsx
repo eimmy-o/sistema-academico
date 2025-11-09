@@ -1,7 +1,10 @@
 import './Styles/coursesStyles.css'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export const Course = () => {
+  
+  const [isProfessorView, setIsProfessorView] = useState(false);
 
   const cardContent = [
     {
@@ -71,6 +74,26 @@ export const Course = () => {
       </h2>
       <hr />
       <br />
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+
+        <button className='switch'
+          onClick={() => setIsProfessorView(!isProfessorView)}
+          style={{ 
+              backgroundColor: isProfessorView ? '#f0f0f0' : '#624185', 
+              color: isProfessorView ? '#624185' : 'white'
+          }}
+        >
+          Switch to {isProfessorView ? 'Student' : 'Professor'} view
+        </button>
+
+        {isProfessorView && (
+          <button className='newcourse'>
+            ➕ Crear Nuevo Curso
+          </button>
+        )}
+      </div>
+
       <div className='dash-card'>
         {cardContent.map((item) => (
           <Link 
