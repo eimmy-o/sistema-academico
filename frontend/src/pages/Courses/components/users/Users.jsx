@@ -1,10 +1,9 @@
-import '../../Styles/coursesStyles.css'
-import { Student }  from "./Student";
+import '../../Styles/courseDetailStyle.css'
+
 export const Users = () => {
   return (
     <div className="container">
-      <Student/>
-      {/* <p> Personas </p> */}
+      <p> Personas </p>
     </div>
   )
 }
