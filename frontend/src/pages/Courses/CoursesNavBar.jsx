@@ -1,15 +1,21 @@
 import { List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material"
-// 🛑 Eliminamos la importación de useNavigate, ya que no vamos a cambiar de ruta.
-// import { useNavigate } from "react-router-dom" 
 
 const coursesNavOptions = [
   {
     text: 'Inicio',
-    tabName: 'home' // ⬅️ Usamos un nombre limpio que coincida con el switch en el padre.
+    tabName: 'home' 
   },
   {
     text: 'Evaluaciones',
-    tabName: 'evaluations' // ⬅️ Nuevo nombre para la pestaña.
+    tabName: 'evaluations'
+  },
+  {
+    text: 'Anuncios',
+    path: '/courses/announcements'
+  },
+  {
+    text: 'Actividades',
+    path: '/courses/assignments'
   },
   {
     text: 'Calificaciones',
@@ -25,12 +31,12 @@ const coursesNavOptions = [
   }
 ]
 
-// ⬅️ Recibimos las nuevas props: onTabChange (la función para cambiar el estado) y activeTab (para el estilo)
+
 export const CoursesNavBar = ({flexDirection = 'row', isMobile, onTabChange, activeTab}) => {
-  // 🛑 Eliminamos 'const navigate = useNavigate()'
   
   return (
     <div>
+      <h1>Programacion basica</h1>
       <List 
         sx={{
           display: 'flex', 
