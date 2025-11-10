@@ -1,52 +1,46 @@
 // src/pages/Courses/components/attendance/AttendancePage.jsx
-import { Routes, Route, Navigate, useLocation, NavLink } from "react-router-dom"
 import AttendanceTake from "./AttendanceTake"
 import AttendanceHistory from "./AttendanceHistory"
-import AttendanceReports from "./AttendanceReports"
 import "./attendance.css"
 
-const Tab = ({ to, children }) => (
-  <NavLink
-    to={to}
-    className={({ isActive }) =>
-      `att-tab ${isActive ? "active" : ""}`
-    }
-  >
-    {children}
-  </NavLink>
-)
+import { useState } from "react";
 
 export const AttendancePage = () => {
-  const base = "/courses/attendance"
-  const { pathname } = useLocation()
+    const [activePanel, setActivePanel] = useState('take'); 
 
-  return (
-    <div className="att-shell">
-      {/* Header */}
-      <header className="att-header">
-       
-      </header>
+    const renderPanel = () => {
+        switch (activePanel) {
+            case 'take':
+                return <AttendanceTake />;
+            case 'history':
+                return <AttendanceHistory />;
+            default:
+                return <AttendanceTake />;
+        }
+    };
 
-      {/* Tabs */}
-      <nav className="att-tabs">
-        <Tab to={`${base}/take`}>Tomar asistencia</Tab>
-        <Tab to={`${base}/history`}>Historial</Tab>
-       
-      </nav>
+    return (
+        <div className="att-shell">
+            <nav className="att-tabs">
+                <button
+                    onClick={() => setActivePanel('take')}
+                    className={`att-tab ${activePanel === 'take' ? "active" : ""}`}
+                >
+                    Tomar asistencia
+                </button>
+                <button
+                    onClick={() => setActivePanel('history')}
+                    className={`att-tab ${activePanel === 'history' ? "active" : ""}`}
+                >
+                    Historial
+                </button>
+            </nav>
 
-      {/* Contenido */}
-      <section className="att-card">
-        <Routes>
-          <Route path="/" element={<Navigate to="take" replace />} />
-          <Route path="take" element={<AttendanceTake />} />
-          <Route path="history" element={<AttendanceHistory />} />
-          
-          {/* 404 local de attendance */}
-          <Route path="*" element={<Navigate to="take" replace />} />
-        </Routes>
-      </section>
-    </div>
-  )
-}
+            <section className="att-card">
+                {renderPanel()}
+            </section>
+        </div>
+    );
+};
 
-export default AttendancePage
+export default AttendancePage;
