@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CoursesHome } from "./CoursesHome"
 import  Grades  from "./components/Grades/Grades"
 import { AttendancePage } from "./components/attendance/AttendancePage"
-import { AssessmentPage } from "./components/assignments/AssignmentsPage"
+import { AssignmentsPage } from "./components/assignments/AssignmentsPage"
 import { Users } from "./components/users/Users"
 import { CoursesNavBar } from "./CoursesNavBar"
 import { Box, IconButton, useMediaQuery } from "@mui/material"
@@ -19,7 +19,7 @@ export const CourseDetailRoutes = () => {
             case 'home':
                 return <CoursesHome />; 
             case 'evaluations':
-                return <AssessmentPage />;
+                return <AssignmentsPage />;
             case 'grades':
                 return <Grades />;
             case 'attendance':
