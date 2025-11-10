@@ -1,4 +1,5 @@
-import './Styles/courseDetailStyle.css'
+import { useState } from 'react'; // Necesario para manejar el estado de la vista
+import './Styles/courseDetailStyle.css';
 
 const staticCourseData = {
     paralelo: 'Paralelo 1',
@@ -12,6 +13,9 @@ const staticCourseData = {
 };
 
 export const CoursesHome = () => {
+    // Estado para controlar la vista: true = Profesor/Edición, false = Estudiante/Lectura
+    const [isProfessorView, setIsProfessorView] = useState(false);
+    
     const currentCourse = staticCourseData; 
     
     const renderMaterial = (material) => (
@@ -28,6 +32,20 @@ export const CoursesHome = () => {
 
     return (
         <div className="course-home-container">
+            <div className="switch-view-area">
+                <button className="switch"
+                    onClick={() => setIsProfessorView(!isProfessorView)}
+                    title={isProfessorView ? "Cambiar a vista de estudiante" : "Cambiar a vista de profesor"}
+                    style={{ 
+                        backgroundColor: isProfessorView ? '#f0f0f0' : '#624185', 
+                        color: isProfessorView ? '#624185' : 'white'
+                    }}
+                >
+                    {isProfessorView ? 'Switch Student view' : 'Switch Professor view'}
+                </button>
+            </div>
+
+            {/* Resto de la data del curso... */}
             <section className="course-data-section">
                 <div className="data-item">
                     <p className="data-label">Paralelo:</p>
@@ -47,8 +65,22 @@ export const CoursesHome = () => {
             </section>
             
             <section className="course-material-section">
-                <h2 className="section-title">Material Disponible ({currentCourse.material.length})</h2>
+                <div className="material-header">
+                    <h2 className="section-title">Material Disponible ({currentCourse.material.length})</h2>
+                    {/* Botón "Subir Material" que aparece condicionalmente */}
+                </div>
                 {renderMaterial(currentCourse.material)}
+
+                <div>
+                    {isProfessorView && (
+                        <button 
+                            className="subirmaterial"
+                            onClick={() => alert('¡Funcionalidad para subir material activada!')}
+                        >
+                            Subir Material
+                        </button>
+                    )}
+                </div>
             </section>
         </div>
     );
