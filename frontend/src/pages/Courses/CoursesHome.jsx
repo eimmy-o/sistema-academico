@@ -1,4 +1,4 @@
-import { useState } from 'react'; // Necesario para manejar el estado de la vista
+import { useState } from 'react'; 
 import './Styles/courseDetailStyle.css';
 
 const staticCourseData = {
@@ -13,7 +13,6 @@ const staticCourseData = {
 };
 
 export const CoursesHome = () => {
-    // Estado para controlar la vista: true = Profesor/Edición, false = Estudiante/Lectura
     const [isProfessorView, setIsProfessorView] = useState(false);
     
     const currentCourse = staticCourseData; 
@@ -45,7 +44,6 @@ export const CoursesHome = () => {
                 </button>
             </div>
 
-            {/* Resto de la data del curso... */}
             <section className="course-data-section">
                 <div className="data-item">
                     <p className="data-label">Paralelo:</p>
@@ -67,7 +65,6 @@ export const CoursesHome = () => {
             <section className="course-material-section">
                 <div className="material-header">
                     <h2 className="section-title">Material Disponible ({currentCourse.material.length})</h2>
-                    {/* Botón "Subir Material" que aparece condicionalmente */}
                 </div>
                 {renderMaterial(currentCourse.material)}
 
@@ -77,7 +74,7 @@ export const CoursesHome = () => {
                             className="subirmaterial"
                             onClick={() => alert('¡Funcionalidad para subir material activada!')}
                         >
-                            Subir Material
+                            ➕  Subir Material
                         </button>
                     )}
                 </div>

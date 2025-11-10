@@ -88,7 +88,9 @@ export const Course = () => {
         </button>
 
         {isProfessorView && (
-          <button className='newcourse'>
+          <button className='newcourse'
+            onClick={() => alert('¡Funcionalidad para crear curso activada!')}
+          >
             ➕ Crear Nuevo Curso
           </button>
         )}
