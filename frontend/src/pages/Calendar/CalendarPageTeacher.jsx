@@ -1,49 +1,75 @@
 import React, { useState } from "react";
 import "./styleCalendar.css";
 import { exportCalendarData } from "./CalendarUtils";
-import CalendarPageTeacher from "./CalendarPageTeacher";
-import CalendarPageAdmin from "./CalendarPageAdmin";
+import CalendarPage from "./CalendarPage"; // página de estudiante
+import CalendarPageAdmin from "./CalendarPageAdmin"; // página de admin
 
+// Días y horas base
 const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 const HOURS = ["09:00-11:00", "11:00-13:00", "13:00-15:00", "15:00-17:00"];
 
-const COURSES = [
-  { id: 1, name: "Cálculo", code: "CAL101", aula: "9M-A104", color: "#e89d41ff", slots: [{ day: 0, start: "09:00", end: "11:00" }, { day: 3, start: "11:00", end: "13:00" }] },
-  { id: 2, name: "Fundamentos de Programación", code: "FP120", aula: "11D-A003", color: "#4e86d9ff", slots: [{ day: 1, start: "11:00", end: "13:00" }] },
-  { id: 3, name: "Química", code: "QUI200", aula: "9M-A005", color: "#5ca141ff", slots: [{ day: 2, start: "09:00", end: "11:00" }] },
+// Materias que dicta
+const TEACHING_COURSES = [
+  {
+    id: 1,
+    name: "Álgebra Lineal",
+    code: "MAT210",
+    aula: "9M-A203",
+    color: "#f59e0b",
+    slots: [
+      { day: 1, start: "09:00", end: "11:00" },
+      { day: 3, start: "11:00", end: "13:00" },
+    ],
+  },
+  {
+    id: 2,
+    name: "Estructuras de Datos",
+    code: "INF330",
+    aula: "11D-A102",
+    color: "#3b82f6",
+    slots: [{ day: 2, start: "13:00", end: "15:00" }],
+  },
+  {
+    id: 3,
+    name: "Programación de Sistemas",
+    code: "INF400",
+    aula: "9M-B204",
+    color: "#10b981",
+    slots: [{ day: 4, start: "09:00", end: "11:00" }],
+  },
 ];
 
+// Evaluaciones
 const EXAMS = [
-  { id: 1, name: "Cálculo Vectorial", date: "2025-11-15", hour: "09:00", aula: "9M-A104", color: "#e89d41ff" },
-  { id: 2, name: "Fundamentos de Programación", date: "2025-11-17", hour: "13:00", aula: "11D-A003", color: "#4e86d9ff" },
-  { id: 3, name: "Química", date: "2025-11-19", hour: "11:00", aula: "9M-A005", color: "#5ca141ff" },
-  { id: 4, name: "Desarrollo de aplicaciones webs y móviles", date: "2025-11-20", hour: "09:00", aula: "9M-A005", color: "#8f41a1ff" },
+  { id: 1, name: "Álgebra Lineal", date: "2025-11-15", hour: "09:00", aula: "9M-A203", color: "#f59e0b" },
+  { id: 2, name: "Estructuras de datos", date: "2025-11-18", hour: "13:00", aula: "11D-A102", color: "#3b82f6" },
+  { id: 3, name: "Programación de sistemas", date: "2025-11-22", hour: "09:00", aula: "9M-B204", color: "#10b981" },
 ];
 
-const TASKS = [
-  { id: 1, title: "Evaluación de Cálculo", due: "2025-11-05", courseId: 1 },
-  { id: 2, title: "Tarea 1 - FP", due: "2025-11-07", courseId: 2 },
-  { id: 3, title: "Informe de Química", due: "2025-11-11", courseId: 3 },
+// Actividades pendientes
+const GRADING_TASKS = [
+  { id: 1, title: "Lección de Álgebra", due: "2025-11-06", courseId: 1 },
+  { id: 2, title: "Tarea de Estructuras", due: "2025-11-10", courseId: 2 },
+  { id: 3, title: "Taller de Programación", due: "2025-11-13", courseId: 3 },
 ];
 
-export default function CalendarPage() {
+export default function CalendarPageTeacher() {
   const [search, setSearch] = useState("");
   const [showExams, setShowExams] = useState(false);
   const [taskFilter, setTaskFilter] = useState("all");
-  const [enrolledCourses, setEnrolledCourses] = useState([1, 2]);
-  const [view, setView] = useState("student");
+  const [view, setView] = useState("teacher"); // "student", "teacher", "admin"
 
-  if (view === "teacher") return <CalendarPageTeacher />;
+  // Cambiar a otra vista según rol
+  if (view === "student") return <CalendarPage />;
   if (view === "admin") return <CalendarPageAdmin />;
 
   const today = new Date().toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
 
-  const filteredCourses = COURSES.filter(c =>
+  const filteredCourses = TEACHING_COURSES.filter(c =>
     c.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const filteredTasks = TASKS.filter(t => {
-    if (!enrolledCourses.includes(t.courseId)) return false;
+  const filteredTasks = GRADING_TASKS.filter(t => {
     if (taskFilter === "all") return true;
     const taskDate = new Date(t.due);
     const now = new Date();
@@ -56,25 +82,13 @@ export default function CalendarPage() {
   function getCoursesAt(dayIndex, hourRange) {
     const [startHour, endHour] = hourRange.split("-");
     return filteredCourses.filter(c =>
-      enrolledCourses.includes(c.id) &&
       c.slots.some(s => s.day === dayIndex && s.start === startHour && s.end === endHour)
     );
   }
 
-  function handleEnroll(courseId) {
-    if (!enrolledCourses.includes(courseId)) {
-      setEnrolledCourses([...enrolledCourses, courseId]);
-      alert(`Te has inscrito en ${COURSES.find(c => c.id === courseId).name}`);
-    }
-  }
-
-  // --- FILTRADO DE EXÁMENES PARA TABLA ---
-  const filteredExams = EXAMS.filter(e => enrolledCourses.includes(e.id));
-
   return (
     <div className="schedule-wrap">
       <div className="container">
-
         {/* BOTONES DE CAMBIO DE VISTA */}
         <div style={{ position: "absolute", top: 10, right: 10, fontSize: "0.8rem" }}>
           <button onClick={() => setView("student")} style={{ marginRight: "5px", padding: "2px 6px" }}>Estudiante</button>
@@ -92,13 +106,12 @@ export default function CalendarPage() {
           <div className="controls">
             <input
               className="input"
-              placeholder="Buscar materia o código"
+              placeholder="Buscar asignatura"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-
             <div className="toggle">
-              <span>Horario</span>
+              <span>Clases</span>
               <label className="switch">
                 <input
                   type="checkbox"
@@ -113,7 +126,7 @@ export default function CalendarPage() {
         </div>
 
         <div className="readonly-notice">
-          🛈 Tu horario es de solo lectura. Solo puedes inscribirte en materias disponibles y sin conflictos de horario.
+          🛈 Este calendario es de solo lectura. No puedes modificar tus horarios, solo revisar tus clases y tareas pendientes.
         </div>
 
         {/* TABLA PRINCIPAL */}
@@ -156,7 +169,7 @@ export default function CalendarPage() {
               <thead>
                 <tr>
                   <th className="hour-col">Hora</th>
-                  {filteredExams.map(exam => (
+                  {EXAMS.map(exam => (
                     <th key={exam.id}>
                       {new Date(exam.date).toLocaleDateString("es-ES", {
                         weekday: "short",
@@ -171,9 +184,9 @@ export default function CalendarPage() {
                 {HOURS.map(hour => (
                   <tr key={hour}>
                     <td className="time">{hour}</td>
-                    {filteredExams.map(exam => (
+                    {EXAMS.map(exam => (
                       <td key={exam.id} className="course-cell">
-                        {exam.hour === hour.split("-")[0] ? (
+                        {exam.hour === hour.split("-")[0] && (
                           <div
                             className="pill"
                             style={{ background: exam.color, cursor: "pointer" }}
@@ -181,8 +194,6 @@ export default function CalendarPage() {
                             <div className="pill-title">{exam.name}</div>
                             <div className="pill-info">{exam.aula}</div>
                           </div>
-                        ) : (
-                          <></>
                         )}
                       </td>
                     ))}
@@ -193,10 +204,10 @@ export default function CalendarPage() {
           )}
         </div>
 
-        {/* TAREAS */}
+        {/* SECCIÓN DE ACTIVIDADES */}
         <div className="tasks-section">
           <div className="tasks-header">
-            <h3>Próximas tareas y evaluaciones</h3>
+            <h3>Actividades pendientes</h3>
             <select className="select" value={taskFilter} onChange={(e) => setTaskFilter(e.target.value)}>
               <option value="all">Todas</option>
               <option value="week">Esta semana</option>
@@ -206,7 +217,7 @@ export default function CalendarPage() {
 
           <div className="tasks-grid">
             {filteredTasks.map(t => {
-              const course = COURSES.find(c => c.id === t.courseId);
+              const course = TEACHING_COURSES.find(c => c.id === t.courseId);
               return (
                 <div
                   key={t.id}
@@ -224,40 +235,18 @@ export default function CalendarPage() {
             })}
           </div>
 
-          {/* EXPORTAR */}
+          {/* BOTONES DE EXPORTACIÓN */}
           <div className="export-section">
             <h4>Exportar</h4>
             <div className="export-buttons">
-              <button onClick={() => exportCalendarData("pdf", COURSES)}>PDF</button>
-              <button onClick={() => exportCalendarData("excel", COURSES)}>EXCEL</button>
-              <button onClick={() => exportCalendarData("csv", COURSES)}>CSV</button>
-              <button onClick={() => exportCalendarData("json", COURSES)}>JSON</button>
-              <button onClick={() => exportCalendarData("txt", COURSES)}>TXT</button>
+              <button onClick={() => exportCalendarData("pdf", TEACHING_COURSES)}>PDF</button>
+              <button onClick={() => exportCalendarData("excel", TEACHING_COURSES)}>EXCEL</button>
+              <button onClick={() => exportCalendarData("csv", TEACHING_COURSES)}>CSV</button>
+              <button onClick={() => exportCalendarData("json", TEACHING_COURSES)}>JSON</button>
+              <button onClick={() => exportCalendarData("txt", TEACHING_COURSES)}>TXT</button>
             </div>
           </div>
         </div>
-
-        {/* INSCRIPCIÓN */}
-        <div className="enroll-section">
-          <h4>Inscribirse en materias disponibles</h4>
-          <div className="tasks-grid">
-            {COURSES.filter(c => !enrolledCourses.includes(c.id)).map(c => (
-              <div
-                key={c.id}
-                className="task-card"
-                style={{ borderTop: `5px solid ${c.color}`, cursor: "pointer" }}
-                onClick={() => handleEnroll(c.id)}
-              >
-                <div className="task-main">
-                  <h4>{c.name}</h4>
-                  <p className="task-course" style={{ color: c.color }}>{c.code}</p>
-                </div>
-                <button className="task-check">➕</button>
-              </div>
-            ))}
-          </div>
-        </div>
-
       </div>
     </div>
   );
