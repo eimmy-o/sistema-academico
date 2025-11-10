@@ -3,10 +3,13 @@ import "./styleCalendar.css";
 import { exportCalendarData } from "./CalendarUtils";
 import CalendarPageTeacher from "./CalendarPageTeacher";
 import CalendarPageAdmin from "./CalendarPageAdmin";
+import { useNavigate } from "react-router-dom";
 
+// ===== Días y horarios ====
 const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 const HOURS = ["09:00-11:00", "11:00-13:00", "13:00-15:00", "15:00-17:00"];
 
+// ===== Datos de materias, exámenes y tareas (simulados por ahora) ====
 const COURSES = [
   { id: 1, name: "Cálculo", code: "CAL101", aula: "9M-A104", color: "#e89d41ff", slots: [{ day: 0, start: "09:00", end: "11:00" }, { day: 3, start: "11:00", end: "13:00" }] },
   { id: 2, name: "Fundamentos de Programación", code: "FP120", aula: "11D-A003", color: "#4e86d9ff", slots: [{ day: 1, start: "11:00", end: "13:00" }] },
@@ -27,21 +30,26 @@ const TASKS = [
 ];
 
 export default function CalendarPage() {
+  // ==== Estados principales ====
   const [search, setSearch] = useState("");
   const [showExams, setShowExams] = useState(false);
   const [taskFilter, setTaskFilter] = useState("all");
   const [enrolledCourses, setEnrolledCourses] = useState([1, 2]);
-  const [view, setView] = useState("student");
+  const [view, setView] = useState("student"); // Estado para cambiar de pantalla
+  
+  const navigate = useNavigate();
 
+  // ==== Render de otras pantallas según view ====
   if (view === "teacher") return <CalendarPageTeacher />;
   if (view === "admin") return <CalendarPageAdmin />;
 
+  // ==== Fecha de hoy==== 
   const today = new Date().toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
 
-  const filteredCourses = COURSES.filter(c =>
-    c.name.toLowerCase().includes(search.toLowerCase())
-  );
+  // ==== Filtrado de cursos por búsqueda ====
+  const filteredCourses = COURSES.filter(c => c.name.toLowerCase().includes(search.toLowerCase()));
 
+  // ==== Filtrado de tareas según curso inscrito y filtro de tiempo==== 
   const filteredTasks = TASKS.filter(t => {
     if (!enrolledCourses.includes(t.courseId)) return false;
     if (taskFilter === "all") return true;
@@ -53,6 +61,7 @@ export default function CalendarPage() {
     return true;
   });
 
+  // ==== Función para obtener cursos en un día y hora específicos ====
   function getCoursesAt(dayIndex, hourRange) {
     const [startHour, endHour] = hourRange.split("-");
     return filteredCourses.filter(c =>
@@ -61,6 +70,7 @@ export default function CalendarPage() {
     );
   }
 
+  // ==== Función para inscribirse en un curso==== 
   function handleEnroll(courseId) {
     if (!enrolledCourses.includes(courseId)) {
       setEnrolledCourses([...enrolledCourses, courseId]);
@@ -68,27 +78,25 @@ export default function CalendarPage() {
     }
   }
 
-  // --- FILTRADO DE EXÁMENES PARA TABLA ---
   const filteredExams = EXAMS.filter(e => enrolledCourses.includes(e.id));
 
   return (
     <div className="schedule-wrap">
       <div className="container">
 
-        {/* BOTONES DE CAMBIO DE VISTA */}
-        <div style={{ position: "absolute", top: 10, right: 10, fontSize: "0.8rem" }}>
-          <button onClick={() => setView("student")} style={{ marginRight: "5px", padding: "2px 6px" }}>Estudiante</button>
-          <button onClick={() => setView("teacher")} style={{ marginRight: "5px", padding: "2px 6px" }}>Profesor</button>
-          <button onClick={() => setView("admin")} style={{ padding: "2px 6px" }}>Admin</button>
+        {/* ===== Botones de cambio de vista ===== */}
+        <div className="view-switcher">
+          <button onClick={() => setView("student")}>Estudiante</button>
+          <button onClick={() => setView("teacher")}>Profesor</button>
+          <button onClick={() => setView("admin")}>Admin</button>
         </div>
 
-        {/* ENCABEZADO */}
+        {/* ===== Encabezado ===== */}
         <div className="header">
           <div>
             <div className="title">📅 Calendario</div>
             <div className="subtitle">Hoy es {today}</div>
           </div>
-
           <div className="controls">
             <input
               className="input"
@@ -96,7 +104,6 @@ export default function CalendarPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-
             <div className="toggle">
               <span>Horario</span>
               <label className="switch">
@@ -112,11 +119,7 @@ export default function CalendarPage() {
           </div>
         </div>
 
-        <div className="readonly-notice">
-          🛈 Tu horario es de solo lectura. Solo puedes inscribirte en materias disponibles y sin conflictos de horario.
-        </div>
-
-        {/* TABLA PRINCIPAL */}
+        {/* ===== Tabla de horarios y exámenes ===== */}
         <div className="card">
           {!showExams ? (
             <table className="timetable">
@@ -135,13 +138,9 @@ export default function CalendarPage() {
                       return (
                         <td key={dayIndex} className="course-cell">
                           {currentCourses.map(course => (
-                            <div
-                              key={course.id}
-                              className="pill"
-                              style={{ background: course.color, cursor: "pointer" }}
-                            >
-                              <div className="pill-title">{course.name}</div>
-                              <div className="pill-info">{course.code} • {course.aula}</div>
+                            <div key={course.id} className="pill" style={{ background: course.color, cursor: "pointer" }} onClick={() => navigate("/courses/pages/Course_1")}>
+                              <div className="pill-title">{course.name} </div>
+                              <div className="pill-info">{course.code} • {course.aula} </div>
                             </div>
                           ))}
                         </td>
@@ -158,11 +157,7 @@ export default function CalendarPage() {
                   <th className="hour-col">Hora</th>
                   {filteredExams.map(exam => (
                     <th key={exam.id}>
-                      {new Date(exam.date).toLocaleDateString("es-ES", {
-                        weekday: "short",
-                        day: "numeric",
-                        month: "short",
-                      })}
+                      {new Date(exam.date).toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" })}
                     </th>
                   ))}
                 </tr>
@@ -174,16 +169,11 @@ export default function CalendarPage() {
                     {filteredExams.map(exam => (
                       <td key={exam.id} className="course-cell">
                         {exam.hour === hour.split("-")[0] ? (
-                          <div
-                            className="pill"
-                            style={{ background: exam.color, cursor: "pointer" }}
-                          >
+                          <div className="pill" style={{ background: exam.color, cursor: "pointer" }} onClick={() => navigate("/courses/pages/Course_1")}>
                             <div className="pill-title">{exam.name}</div>
                             <div className="pill-info">{exam.aula}</div>
                           </div>
-                        ) : (
-                          <></>
-                        )}
+                        ) : null}
                       </td>
                     ))}
                   </tr>
@@ -193,7 +183,7 @@ export default function CalendarPage() {
           )}
         </div>
 
-        {/* TAREAS */}
+        {/* ===== Tareas ===== */}
         <div className="tasks-section">
           <div className="tasks-header">
             <h3>Próximas tareas y evaluaciones</h3>
@@ -203,16 +193,11 @@ export default function CalendarPage() {
               <option value="month">Este mes</option>
             </select>
           </div>
-
           <div className="tasks-grid">
             {filteredTasks.map(t => {
               const course = COURSES.find(c => c.id === t.courseId);
               return (
-                <div
-                  key={t.id}
-                  className="task-card"
-                  style={{ borderTop: `5px solid ${course.color}`, cursor: "pointer" }}
-                >
+                <div key={t.id} className="task-card" style={{ borderTop: `5px solid ${course.color}`, cursor: "pointer" }} onClick={() => navigate("/courses/pages/Course_1")}>
                   <div className="task-main">
                     <h4>{t.title}</h4>
                     <p className="task-date">📅 {t.due}</p>
@@ -224,7 +209,7 @@ export default function CalendarPage() {
             })}
           </div>
 
-          {/* EXPORTAR */}
+          {/* ===== Exportar ===== */}
           <div className="export-section">
             <h4>Exportar</h4>
             <div className="export-buttons">
@@ -237,17 +222,12 @@ export default function CalendarPage() {
           </div>
         </div>
 
-        {/* INSCRIPCIÓN */}
+        {/* ===== Inscripción a cursos ====== */}
         <div className="enroll-section">
           <h4>Inscribirse en materias disponibles</h4>
           <div className="tasks-grid">
             {COURSES.filter(c => !enrolledCourses.includes(c.id)).map(c => (
-              <div
-                key={c.id}
-                className="task-card"
-                style={{ borderTop: `5px solid ${c.color}`, cursor: "pointer" }}
-                onClick={() => handleEnroll(c.id)}
-              >
+              <div key={c.id} className="task-card" style={{ borderTop: `5px solid ${c.color}`, cursor: "pointer" }} onClick={() => handleEnroll(c.id)}>
                 <div className="task-main">
                   <h4>{c.name}</h4>
                   <p className="task-course" style={{ color: c.color }}>{c.code}</p>

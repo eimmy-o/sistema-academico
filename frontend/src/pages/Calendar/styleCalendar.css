@@ -1,17 +1,17 @@
 /* Variables globales */
 :root {
-  --primary-a: #AA7EF7;
-  --primary-b: #5B4381;
-  --primary-surface: #E5D7FB;
-  --bg: #FFFFFF;
-  --text: #212121;
-  --text-secondary: #6B6B6B;
-  --border: #E9E9EF;
-  --shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
-  --radius: 20px;
+  --primary-a: #AA7EF7; /* Color principal claro */
+  --primary-b: #5B4381; /* Color principal oscuro */
+  --primary-surface: #E5D7FB; /* Fondo de superficies destacadas */
+  --bg: #FFFFFF; /* Fondo general */
+  --text: #212121; /* Color de texto principal */
+  --text-secondary: #6B6B6B; /* Color de texto secundario */
+  --border: #E9E9EF; /* Color de bordes */
+  --shadow: 0 8px 18px rgba(0, 0, 0, 0.06); /* Sombra estándar para tarjetas */
+  --radius: 20px; /* Radio de borde general */
 }
 
-/* Configuración base del box */
+/* Box-sizing global */
 * {
   box-sizing: border-box;
 }
@@ -51,7 +51,7 @@
   margin-top: 0.3rem;
 }
 
-/* Filtros-Inputs de control */
+/* Controles: inputs y selects */
 .controls {
   display: flex;
   flex-wrap: wrap;
@@ -68,7 +68,7 @@
   background: #fff;
 }
 
-/* Tarjetas y tablas */
+/* Tarjetas y contenedores */
 .card {
   background: #fff;
   border-radius: var(--radius);
@@ -81,8 +81,6 @@
 .timetable {
   width: 100%;
   border-collapse: collapse;
-  border-radius: var(--radius);
-  overflow: hidden;
   table-layout: fixed;
   min-width: 900px;
 }
@@ -93,7 +91,6 @@
   text-align: center;
   padding: 14px;
   word-wrap: break-word;
-  width: calc(100% / 6);
   vertical-align: middle;
 }
 
@@ -109,7 +106,7 @@
   width: 130px;
 }
 
-/* Bloques de materias en la tabla */
+/* Bloques de materias */
 .pill {
   padding: 10px 12px;
   border-radius: 14px;
@@ -174,7 +171,7 @@
   font-size: 0.9rem;
 }
 
-/* Botón para marcar tarea como completada */
+/* Botón de marcar tarea completada */
 .task-check {
   border: none;
   background: var(--primary-surface);
@@ -230,7 +227,7 @@
   color: var(--text-secondary);
 }
 
-/* Switch (interruptor visual) */
+/* Switch visual */
 .switch {
   position: relative;
   display: inline-block;
@@ -284,6 +281,7 @@ input:checked + .slider:before {
   }
 }
 
+/* Formulario de administración del calendario */
 .calendar-admin-form {
   background: #fff;
   padding: 1.5rem;
@@ -298,6 +296,7 @@ input:checked + .slider:before {
   color: #333;
 }
 
+/* Inputs dentro del formulario */
 .calendar-admin-inputs {
   display: flex;
   flex-wrap: wrap;
@@ -305,6 +304,7 @@ input:checked + .slider:before {
   align-items: center;
 }
 
+/* Botón de agregar */
 .add-button {
   background: #007bff;
   color: white;
@@ -319,9 +319,23 @@ input:checked + .slider:before {
   background: #0056b3;
 }
 
+/* Aviso solo lectura */
 .readonly-notice {
   font-size: 0.9rem;
   color: #555;
   margin-bottom: 10px;
   text-align: center;
+}
+
+/* Switch de vista del calendario */
+.view-switcher {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.view-switcher button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
