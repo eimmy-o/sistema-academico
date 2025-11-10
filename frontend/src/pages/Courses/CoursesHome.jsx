@@ -1,84 +1,88 @@
-import { useState } from 'react'; 
-import './Styles/courseDetailStyle.css';
+import React, { useState } from 'react';
+import './Styles/coursesStyles.css';
+import { CoursesHomeStudent } from './CoursesHomeStudent';
 
-const staticCourseData = {
-    paralelo: 'Paralelo 1',
-    profesor: 'Dr. María García',
-    descripcion: 'Este curso cubre los fundamentos del desarrollo de aplicaciones web y móvil, enfocado en frameworks como React. El objetivo es preparar a los estudiantes para implementar proyectos de software con metodologías ágiles.',
-    material: [
-        { nombre: 'Diapositivas Tema 1 - Introducción', tipo: 'PDF' },
-        { nombre: 'Guía de Laboratorio 3', tipo: 'DOCX' },
-        { nombre: 'Video Tutorial - Hooks y Estados', tipo: 'MP4' },
-    ]
-};
-
+// Componente para la vista del profesor
 export const CoursesHome = () => {
-    const [isProfessorView, setIsProfessorView] = useState(false);
-    
-    const currentCourse = staticCourseData; 
-    
-    const renderMaterial = (material) => (
-        <div className="material-list">
-            {material.map((item, index) => (
-                <div key={index} className="material-item">
-                    <span className={`material-icon type-${item.tipo.toLowerCase()}`}>{item.tipo}</span>
-                    <p className="material-name">{item.nombre}</p>
-                </div>
-            ))}
-            {material.length === 0 && <p className="no-material-text">No hay material disponible actualmente.</p>}
-        </div>
-    );
+  const [isStudentView, setIsStudentView] = useState(false); // Estado para cambiar entre vistas
 
-    return (
-        <div className="course-home-container">
-            <div className="switch-view-area">
-                <button className="switch"
-                    onClick={() => setIsProfessorView(!isProfessorView)}
-                    title={isProfessorView ? "Cambiar a vista de estudiante" : "Cambiar a vista de profesor"}
-                    style={{ 
-                        backgroundColor: isProfessorView ? '#f0f0f0' : '#624185', 
-                        color: isProfessorView ? '#624185' : 'white'
-                    }}
-                >
-                    {isProfessorView ? 'Switch Student view' : 'Switch Professor view'}
-                </button>
+  // Datos de ejemplo
+  const courseSummary = {
+    numStudents: 150,
+    attendance: 85,
+    averageGrade: 75,
+    progress: 65,
+    tasksCreated: 20,
+    classesPerWeek: 3
+  };
+
+  // Función para cambiar a la vista de estudiante
+  const changeToStudentView = () => {
+    setIsStudentView(true);
+  };
+
+  // Función para regresar a la vista de profesor
+  const backToProfessorView = () => {
+    setIsStudentView(false);
+  };
+
+  return (
+    <div className="att-main">
+      {/* Mostrar vista de profesor o estudiante */}
+      {!isStudentView ? (
+        <>
+          {/* Vista del profesor */}
+          <button onClick={changeToStudentView} className="btn primary">
+            Cambiar a vista de estudiante
+          </button>
+
+          <h2 className="att-title">Descripcion</h2>
+          <p className="att-subtitle">
+            Este curso proporciona una introducción profunda a los conceptos clave
+            de desarrollo web, con énfasis en las mejores prácticas y herramientas
+            modernas.
+          </p>
+          <hr></hr>
+          <h2 className="att-title">Resumen</h2>
+          {/* Tarjetas con información */}
+          <div className="cards">
+            <div className="att-card">
+              <h3 className="ctitle">Número de Estudiantes</h3>
+              <p className="cnum">{courseSummary.numStudents}</p>
             </div>
 
-            <section className="course-data-section">
-                <div className="data-item">
-                    <p className="data-label">Paralelo:</p>
-                    <p className="data-value">{currentCourse.paralelo}</p>
-                </div>
-                <div className="data-item">
-                    <p className="data-label">Profesor:</p>
-                    <p className="data-value">{currentCourse.profesor}</p>
-                </div>
-            </section>
-            
-            <section className="course-description-section">
-                <h2 className="section-title">Descripción</h2>
-                <p className="description-text">
-                    {currentCourse.descripcion}
-                </p>
-            </section>
-            
-            <section className="course-material-section">
-                <div className="material-header">
-                    <h2 className="section-title">Material Disponible ({currentCourse.material.length})</h2>
-                </div>
-                {renderMaterial(currentCourse.material)}
+            <div className="att-card">
+              <h3 className="ctitle">Porcentaje de Asistencia</h3>
+              <p className="cnum">{courseSummary.attendance}%</p>
+            </div>
 
-                <div>
-                    {isProfessorView && (
-                        <button 
-                            className="subirmaterial"
-                            onClick={() => alert('¡Funcionalidad para subir material activada!')}
-                        >
-                            ➕  Subir Material
-                        </button>
-                    )}
-                </div>
-            </section>
-        </div>
-    );
+            <div className="att-card">
+              <h3 className="ctitle">Promedio Total</h3>
+              <p className="cnum">{courseSummary.averageGrade}%</p>
+            </div>
+
+            <div className="att-card">
+              <h3 className="ctitle">Progreso del Pendium</h3>
+              <div className="progress">
+                <div className="bar" style={{ width: `${courseSummary.progress}%` }}></div>
+              </div>
+            </div>
+
+            <div className="att-card">
+              <h3 className="ctitle">Tareas Creadas</h3>
+              <p className="cnum">{courseSummary.tasksCreated}</p>
+            </div>
+
+            <div className="att-card">
+              <h3 className="ctitle">Clases por Semana</h3>
+              <p className="cnum">{courseSummary.classesPerWeek}</p>
+            </div>
+          </div>
+        </>
+      ) : (
+        // Vista de estudiante
+        <CoursesHomeStudent onBackToProfessorView={backToProfessorView} />
+      )}
+    </div>
+  );
 };

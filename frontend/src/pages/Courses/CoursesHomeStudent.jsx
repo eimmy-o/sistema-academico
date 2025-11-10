@@ -18,6 +18,7 @@ export const CoursesHomeStudent = ({ onBackToProfessorView }) => {
         Volver a la vista de profesor
       </button>
       <h2 className="att-title">Mi Resumen de Curso</h2>
+      <hr></hr>
       <div className="cards">
         <div className="att-card">
           <h3 className="ctitle">Porcentaje de Asistencia</h3>
