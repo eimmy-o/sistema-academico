@@ -10,10 +10,6 @@ const coursesNavOptions = [
     tabName: 'evaluations' 
   },
   {
-    text: 'Tareas',
-    tabName: 'assignements'
-  },
-  {
     text: 'Anuncios',
     tabName: 'announcements'
   },

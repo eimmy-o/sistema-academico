@@ -10,11 +10,6 @@ import { SignOutModal } from "./modals/SignOutModal";
 
 const getMainMenuItems = () => [
   {
-    text: 'Dashboard',
-    icon: <DashboardIcon style={{ width: 18 }}/>,
-    path: '/dashboard'
-  },
-  {
     text: 'Cursos',
     icon: <LibraryBooksIcon style={{ width: 18 }}/>,
     path: '/courses'
